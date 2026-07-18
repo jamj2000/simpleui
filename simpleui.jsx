@@ -3,8 +3,8 @@ Simple UI - Biblioteca de componentes
 Copyright (c) 2026-Present - José Antonio Muñoz Jiménez - jamj2000 at gmail dot com
 Licencia MIT
 
-Repositorio: https://github.com/jamj2000/simpleui
 Descarga:    curl -O https://raw.githubusercontent.com/jamj2000/simpleui/main/simpleui.jsx
+Repositorio: https://github.com/jamj2000/simpleui
 App ejemplo: https://github.com/jamj2000/simpleui-app
 */
 
