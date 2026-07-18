@@ -2,7 +2,6 @@
 
 Biblioteca de componentes de UI
 
-
 ## Motivación
 
 El principal motivo por el que decidí desarrollar esta biblioteca de componentes UI es ofrecer a mi alumnado de Desarrollo de Aplicaciones Web una introducción muy básica al trabajo con componentes.
@@ -27,8 +26,12 @@ Simplemente descarga el archivo **`simpleui.jsx`** a tu carpeta de componentes.
 
 
 ```sh
-curl https://github.com/jamj2000/simpleui/blob/main/simpleui.jsx
+curl -O https://raw.githubusercontent.com/jamj2000/simpleui/main/simpleui.jsx
 ```
+
+## App de ejemplo
+
+Existe una aplicación web de ejemplo desarrollada con Next.js/Tailwind cuyo código está disponible en [Simple UI App](https://github.com/jamj2000/simpleui-app). Ahí encontrarás también el enlace a la app desplegada para comprobar su funcionalidad.
 
 
 ## Otras bibliotecas de UI más avanzadas

@@ -1,3 +1,13 @@
+/*
+Simple UI - Biblioteca de componentes
+Copyright (c) 2026-Present - José Antonio Muñoz Jiménez - jamj2000 at gmail dot com
+Licencia MIT
+
+Repositorio: https://github.com/jamj2000/simpleui
+Descarga:    curl -O https://raw.githubusercontent.com/jamj2000/simpleui/main/simpleui.jsx
+App ejemplo: https://github.com/jamj2000/simpleui-app
+*/
+
 
 // Se usan en Alert y Badge (no se exportan)
 const styles = {
@@ -37,6 +47,20 @@ export const Button = ({ onClick, children, className = "bg-indigo-100 dark:bg-i
 
 
 
+// Usar dentro de un formulario
+export const Submit = ({ formAction, disabled = false, children, className = "bg-blue-200 dark:bg-blue-500" }) => (
+    <button
+        type="submit"
+        disabled={disabled}
+        formAction={formAction}
+        className={`px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 cursor-pointer hover:opacity-80 shadow-md ${className} `}
+    >
+        {children}
+    </button>
+)
+
+
+
 // variant: 'horizontal' | 'vertical'
 export const Separator = ({ variant = 'horizontal' }) => <div className={`bg-slate-300 dark:bg-slate-700 rounded-full ${variant === 'horizontal' ? 'w-full h-px' : 'w-px self-stretch'}`} />
 
@@ -69,7 +93,7 @@ export const Tooltip = ({ children }) => (
 
 // Se abre al hacer hover en el title y se cierra al dejar de hacer hover en el title (title no es clickeable)
 export const Popover = ({ title, children }) => (
-    <div className="group relative w-fit bg-white dark:bg-zinc-700">
+    <div className="group relative w-fit">
         {title}
         <div className="z-10 absolute top-full left-0 invisible group-hover:visible rounded-lg bg-white dark:bg-zinc-800 border border-slate-200 dark:border-slate-700 p-4 shadow-xl">
             {children}
@@ -126,16 +150,4 @@ export const Modal = ({ id, trigger, children }) => (
 )
 
 
-
-// Usar dentro de un formulario
-export const Submit = ({ formAction, disabled = false, children, className = "bg-blue-200 dark:bg-blue-500" }) => (
-    <button
-        type="submit"
-        disabled={disabled}
-        formAction={formAction}
-        className={`px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 cursor-pointer hover:opacity-80 shadow-md ${className} `}
-    >
-        {children}
-    </button>
-)
 
