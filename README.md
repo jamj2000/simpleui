@@ -16,6 +16,7 @@ El código de este proyecto se mantendrá en todo momento lo más simple posible
 
 - Carácter didáctico.
 - Pensado para stack Next.js/TailwindCSS y SSR.
+- Soporte de modos claro/oscuro.
 - Copiar y Pegar.
 - Modificar para adaptar a cada proyecto.
 
