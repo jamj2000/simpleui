@@ -48,7 +48,7 @@ El código de este proyecto se mantendrá en todo momento lo más simple posible
 
 # 3. App de ejemplo
 
-Existe una aplicación web de ejemplo desarrollada con Next.js/Tailwind cuyo código está disponible en [Simple UI App](https://github.com/jamj2000/simpleui-app). Ahí encontrarás también el enlace a la app desplegada para comprobar su funcionalidad.
+Existe una [aplicación web de ejemplo](https://simpleui-app.vercel.app/) desarrollada con Next.js/Tailwind cuyo código está disponible en [Simple UI App](https://github.com/jamj2000/simpleui-app). Ahí encontrarás también el enlace a la app desplegada para comprobar su funcionalidad.
 
 
 # 4. Documentación
