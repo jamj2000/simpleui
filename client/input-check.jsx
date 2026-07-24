@@ -1,8 +1,6 @@
 'use client'
 
 
-import { CircleIcon, SquareIcon, HeartIcon, StarIcon } from "../server/icons";
-
 
 const toggle = (event) => {
     const input = event.currentTarget.parentNode.firstElementChild;

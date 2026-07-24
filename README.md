@@ -60,6 +60,8 @@ Existe una [aplicación web de ejemplo](https://simpleui-app.vercel.app/) desarr
 cd components
 
 git clone https://github.com/jamj2000/simpleui
+
+rm -rf simpleui/.git
 ```
 
 ## 4.2. Importar componentes deseados 

@@ -114,7 +114,7 @@ export const HexagonIcon = ({ color = "text-white", colorChecked = "green" }) =>
 )
 
 
-export const CrossIcon = ({ color = "text-white", colorChecked = "pink" }) => (
+export const CrossIcon = ({ color = "text-white", colorChecked = "lime" }) => (
     <svg
         height={26}
         width={26}

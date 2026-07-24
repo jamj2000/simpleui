@@ -7,7 +7,12 @@ import { InputNumber, InputText, Submit, Alert, Spinner, Space } from "../server
 
 
 
-export const Form = ({ action, data = {}, disabled = false, className = "" }) => {
+export const Form = ({
+    action = async (state) => state,
+    data = {},
+    disabled = false,
+    className = ""
+}) => {
     const [state, formAction, isPending] = useActionState(action, {})
     const formRef = useRef(null);
     // const formId = useId()
