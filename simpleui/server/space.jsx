@@ -1,0 +1,1 @@
+export const Space = ({ height = 10 }) => <div style={{ height: `${height}px` }} />

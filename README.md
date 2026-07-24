@@ -59,7 +59,7 @@ Existe una [aplicación web de ejemplo](https://simpleui-app.vercel.app/) desarr
 ```sh
 cd components
 
-curl -O https://raw.githubusercontent.com/jamj2000/simpleui/main/simpleui.jsx
+git clone https://github.com/jamj2000/simpleui
 ```
 
 ## 4.2. Importar componentes deseados 
@@ -86,7 +86,7 @@ import { Alert, Button, Submit, Spinner } from "@/components/simpleui"
 <strong>¡Nota!</strong> Este es un mensaje de información.
 </Alert>
 
-<Badge variant="info">  Nuevo</Badge>
+<Badge variant="info" title="Nuevo" />
 ```
 
 ## 5.2. `Button`
