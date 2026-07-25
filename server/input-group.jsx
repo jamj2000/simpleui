@@ -8,22 +8,29 @@ const classLabel = `absolute left-3.75 top-0 -translate-y-1/2
                     `
 
 
-
-export const InputGroup = ({ label, name, values, disabled, icon = <CrossIcon />, radio }) => (
-
-    <fieldset className={classGroup} >
+export const InputGroup = ({
+    label,
+    name,
+    values,
+    disabled,
+    icon = <CrossIcon />,
+    radio
+}) => (
+    <fieldset className={classGroup}>
         <legend className={classLabel}>{label}</legend>
-        {values?.map(value => (
+        {values?.map(([value, isChecked]) => (
             <InputCheck
                 radio={radio}
-                key={value[0]}
+                key={value}
                 name={name}
-                value={value[0]}
-                defaultChecked={value[1]}
+                value={value}
+                defaultChecked={isChecked}
                 disabled={disabled}
                 icon={icon}
-            />))}
-    </fieldset >
-
+            />
+        ))}
+    </fieldset>
 )
+
+
 

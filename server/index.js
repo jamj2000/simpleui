@@ -1,4 +1,5 @@
-export { Alert, Badge } from './alert.badge'
+export { AlertInfo, AlertSuccess, AlertWarning, AlertError } from './alert'
+export { BadgeInfo, BadgeSuccess, BadgeWarning, BadgeError } from './badge'
 export { Button } from './button'
 export { Submit } from './submit'
 export { Space } from './space'
@@ -18,7 +19,6 @@ export { HeartIcon } from './icons'
 export { StarIcon } from './icons'
 export { HexagonIcon } from './icons'
 export { CrossIcon } from './icons'
-export { Clip } from './clip'
 
 
 

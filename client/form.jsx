@@ -1,57 +1,123 @@
-'use client'
+"use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useId } from "react";
 import { toast } from "sonner";
-import { InputNumber, InputText, Submit, Alert, Spinner, Space } from "../server";
+
+// 1. Importas todos los componentes de UI disponibles
+import {
+    InputText,
+    InputNumber,
+    InputGroup,
+    Submit,
+    BadgeError
+} from "@/components/simpleui";
+
+// 2. Creas el mapa que relaciona el nombre (String) con el componente (React)
+const COMPONENT_MAP = {
+    InputText,
+    InputNumber,
+    InputGroup,
+};
+
+
+
+
+const fields = [
+    {
+        name: "nombre",
+        label: "Nombre",
+        type: "text",
+        component: "InputText"
+    },
+    {
+        name: "empresa",
+        label: "Empresa",
+        type: "text",
+        component: "InputText"
+    },
+
+    {
+        name: "cargo",
+        label: "Cargo",
+        type: "text",
+        component: "InputText"
+    },
+    {
+        name: "habilidades",
+        label: "Habilidades",
+        component: "InputGroup",
+        props: {
+            radio: false,
+            values: [
+                ["leer", false],
+                ["cine", true],
+                ["música", true],
+                ["deporte", false]
+            ]
+        },
+    },
+];
+
 
 
 
 
 export const Form = ({
-    action = async (state) => state,
+    action = async () => { },
     data = {},
+    fields = [],
     disabled = false,
     className = ""
 }) => {
-    const [state, formAction, isPending] = useActionState(action, {})
+    const [state, formAction, isPending] = useActionState(action, null);
     const formRef = useRef(null);
-    // const formId = useId()
+    const formId = useId();
 
     useEffect(() => {
-        toast[state.type]?.(state.message)
-        formRef.current?.closest("dialog")?.close();
-        // document.getElementById(formId).closest("dialog")?.close()
-    }, [state])
+        if (!state) return;
 
+        if (state.message && state.type && toast[state.type]) {
+            toast[state.type](state.message);
+        }
+
+        if (state.type === "success" || state.success) {
+            formRef.current?.closest("dialog")?.close();
+        }
+    }, [state]);
 
     return (
-        <form ref={formRef} action={formAction} className={className}>
+        <form ref={formRef} id={formId} action={formAction} className={className}>
+            <input type="hidden" name="id" defaultValue={data.id ?? 0} />
 
-            <InputText
-                label="Introduce tu nombre"
-                name="nombre"
-                defaultValue={state.values?.nombre ?? data.nombre}
-                disabled={disabled}
-            />
-            {state.errors?.nombre && <Alert variant="error" small={true} >{state.errors.nombre}</Alert>}
+            {fields.map((field) => {
+                // 3. Resolvemos el componente según el string pasado en 'field.component'
+                // Si no se indica ninguno o no existe en el mapa, usa InputText por defecto
+                const ComponenteUI = COMPONENT_MAP[field.component] || InputText;
 
-            <InputNumber
-                label="Introduce tu edad"
-                name="edad"
-                defaultValue={state.values?.edad ?? data.edad}
-                disabled={disabled}
-            />
-            {state.errors?.edad && <Alert variant="error" small={true} >{state.errors.edad}</Alert>}
+                const valorDefault = state?.values?.[field.name] ?? data[field.name];
+                const errorCampo = state?.errors?.[field.name];
 
+                return (
+                    <div key={field.name} className="flex flex-col gap-1">
+                        <ComponenteUI
+                            label={field.label}
+                            name={field.name}
+                            defaultValue={valorDefault}
+                            disabled={disabled || field.disabled}
+                            {...field.props} // Pasa cualquier prop extra específica que necesites
+                        />
 
-            <Space height={20} />
-            <Submit disabled={isPending} wide>
-                {isPending ? <Spinner type={6} size={6} color="text-white" /> : 'Aceptar'}
+                        {errorCampo && (
+                            <BadgeError>{errorCampo}</BadgeError>
+                        )}
+                    </div>
+                );
+            })}
+
+            <Submit disabled={isPending || disabled}>
+                {isPending ? "Guardando..." : "Guardar"}
             </Submit>
-
         </form>
-    )
-}
-
-
+    );
+};
 

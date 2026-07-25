@@ -1,5 +1,6 @@
 'use client'
 
+import { CircleIcon, SquareIcon } from "../server";
 
 
 const toggle = (event) => {
@@ -10,7 +11,7 @@ const toggle = (event) => {
 const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1)
 
 
-export const InputCheck = ({ label = "", name, value, defaultChecked, disabled, icon, radio }) => (
+export const InputCheck = ({ label = "", name, value, defaultChecked, disabled, icon, radio = false }) => (
     <label className="flex items-center gap-2 w-fit">
         <input
             type={radio ? "radio" : "checkbox"}
@@ -20,7 +21,7 @@ export const InputCheck = ({ label = "", name, value, defaultChecked, disabled, 
             disabled={disabled}
             className="hidden peer"
         />
-        {icon}
+        {icon ? icon : (radio ? <CircleIcon /> : <SquareIcon />)}
         <span>{label || capitalize(value)}</span>
     </label>
 )
