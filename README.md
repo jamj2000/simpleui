@@ -9,21 +9,31 @@ Biblioteca de componentes de UI
   - [4.1. Instalación de Simple UI](#41-instalación-de-simple-ui)
   - [4.2. Importar componentes deseados](#42-importar-componentes-deseados)
 - [5. Ejemplos de uso](#5-ejemplos-de-uso)
-  - [5.1. `Alert`, `Badge`](#51-alert-badge)
-  - [5.2. `Button`](#52-button)
-  - [5.3. `Submit`](#53-submit)
-  - [5.4. `Separator`](#54-separator)
-  - [5.5. `Space`](#55-space)
-  - [5.6. `Spinner`](#56-spinner)
-  - [5.7. `Skeleton`](#57-skeleton)
-  - [5.8. `Tooltip`](#58-tooltip)
-  - [5.9. `Popover`](#59-popover)
-  - [5.10. `Dropdown`](#510-dropdown)
-  - [5.11. `Dropdown2`](#511-dropdown2)
-  - [5.12. `Modal`](#512-modal)
+  - [5.1. `Alert`,](#51-alert)
+  - [5.2. `Badge`](#52-badge)
+  - [5.3. `Button`](#53-button)
+  - [5.4. `Submit`](#54-submit)
+  - [5.5. `Separator`](#55-separator)
+  - [5.6. `Space`](#56-space)
+  - [5.7. `Spinner`](#57-spinner)
+  - [5.8. `Skeleton`](#58-skeleton)
+  - [5.9. `Tooltip`](#59-tooltip)
+  - [5.10. `Popover`](#510-popover)
+  - [5.11. `Dropdown`](#511-dropdown)
+  - [5.12. `Dropdown2`](#512-dropdown2)
+  - [`MainMenu`](#mainmenu)
+  - [`MenuLink`](#menulink)
+  - [5.13. `Modal`](#513-modal)
+  - [`Form`](#form)
+  - [`InputText`](#inputtext)
+  - [`InputNumber`](#inputnumber)
+  - [`InputImage`](#inputimage)
+  - [`InputCheck`](#inputcheck)
+  - [`InputGroup`](#inputgroup)
 - [6. Otras bibliotecas de UI más avanzadas](#6-otras-bibliotecas-de-ui-más-avanzadas)
     - [6.0.1. DaisyUI](#601-daisyui)
     - [6.0.2. Shadcn](#602-shadcn)
+
 
 
 # 1. Motivación
@@ -78,20 +88,45 @@ import { Alert, Button, Submit, Spinner } from "@/components/simpleui"
 > A continuación se muestran los **componentes disponibles, organizados de manera *casi alfabética*, agrupando los componentes similares.**
 
 
-## 5.1. `Alert`, `Badge`
+## 5.1. `Alert`, 
 
-> Información con color de fondo según la variante.  
-> Variantes soportadas: `info`, `success`, `warning`, `error`
+> Información con color de fondo.  
+
 
 ```jsx
-<Alert variant="info"> 
+<AlertInfo> 
 <strong>¡Nota!</strong> Este es un mensaje de información.
-</Alert>
+</AlertInfo>
 
-<Badge variant="info" title="Nuevo" />
+<AlertSuccess> 
+<strong>¡Éxito!</strong> Este es un mensaje de éxito.
+</AlertSuccess>
+
+<AlertWarning> 
+<strong>¡Aviso!</strong> Este es un mensaje de aviso.
+</AlertWarning>
+
+<AlertError> 
+<strong>¡Error!</strong> Este es un mensaje de error.
+</AlertError>
 ```
 
-## 5.2. `Button`
+## 5.2. `Badge`
+
+> Insignia con color de fondo. 
+
+```jsx
+<BadgeInfo>Nota</BadgeInfo>
+
+<BadgeSuccess>Éxito</BadgeSuccess>
+
+<BadgeWarning>Aviso</BadgeWarning>
+
+<BadgeError>Error</BadgeError>
+```
+
+
+## 5.3. `Button`
 
 > Botón con **funcionalidad ejecutable en el navegador** (cliente). La función a ejecutar se pasa en la propiedad `onClick`. 
 
@@ -102,7 +137,7 @@ import { Alert, Button, Submit, Spinner } from "@/components/simpleui"
 ```
 
 
-## 5.3. `Submit`
+## 5.4. `Submit`
 
 > Botón **asociado a un formulario** con **funcionalidad ejecutable en el servidor**. La función a ejecutar se pasa en el propiedad `formAction`.
 > 
@@ -127,7 +162,7 @@ formData.append("pais", "Mexico");
 > En este caso, a la función a ejecutar se la conoce como **acción del servidor** asociada a un formulario y, como su nombre indica, su código se ejecuta en el backend, normalmente para gestionar información enviada por el usuario y para realizar operaciones sobre bases de datos compartidas la mayor parte de las veces. 
  
 
-## 5.4. `Separator`
+## 5.5. `Separator`
 
 > Línea de separación.  
 > Variantes soportadas: `horizontal`, `vertical`. Por defecto horizontal.
@@ -142,7 +177,7 @@ formData.append("pais", "Mexico");
 </div>
 ```
 
-## 5.5. `Space`
+## 5.6. `Space`
 
 > Espacio de separación vertical entre elementos.
 
@@ -151,7 +186,7 @@ formData.append("pais", "Mexico");
 ```
 
 
-## 5.6. `Spinner`
+## 5.7. `Spinner`
 
 > Indicador visual de carga que muestra que una operación está en curso, sin informar del progreso exacto ni del tiempo restante. Hay disponibles 8 tipos, desde 0 a 7. 
 
@@ -191,7 +226,7 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 >```
 
 
-## 5.7. `Skeleton`
+## 5.8. `Skeleton`
 
 > Es un marcador de posición que reproduce la estructura aproximada del contenido que aún se está cargando.  
 > No admite propiedades de personalización.  
@@ -209,7 +244,7 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 >
 > Los 4 componentes siguientes permiten la personalización de su posición. Para ello debes modificar, en el código de la biblioteca, las clases `top-*`, `left-*`, `right-*`, `botton-*` que aparecen después de la clase `absolute`.
 
-## 5.8. `Tooltip`
+## 5.9. `Tooltip`
 
 > Pequeño mensaje informativo flotante que aparece al hacer `hover` sobre el elemento contenedor padre, el cual debe tener className `group relative` para el correcto funcionamiento. La finalidad principal de los `Tooltip`s es mostrar información de ayuda.
 
@@ -226,7 +261,7 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 ``` 
 
 
-## 5.9. `Popover`
+## 5.10. `Popover`
 
 > Panel flotante que aparece al hacer `hover` sobre `title` del Popover. Es similar al `Tooltip`, aunque suele usarse con paneles que contienen mayor cantidad información.
 
@@ -242,7 +277,7 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 ```
 
 
-## 5.10. `Dropdown`
+## 5.11. `Dropdown`
 
 > El panel flotante permanece abierto después del `hover`. Para cerrar el panel basta con pulsar fuera del `Dropdown`.
 
@@ -258,7 +293,7 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 ```
 
 
-## 5.11. `Dropdown2`
+## 5.12. `Dropdown2`
 
 > Similar a `Dropdown`. A diferencia del anterior, para cerrar el panel es necesario volver a hacer click en el `title`, no funciona pulsar fuera de `Dropdown2`. Se usa cuando queremos que el panel esté visible mientras interactuamos con el resto de la página.
 
@@ -273,9 +308,16 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 </Dropdown2>
 ```
 
+## `MainMenu`
 
 
-## 5.12. `Modal`
+
+## `MenuLink`
+
+
+
+
+## 5.13. `Modal`
 
 > Ventana o panel superpuesto que interrumpe temporalmente la interacción con el resto de la interfaz hasta que el usuario lo cierra o completa la acción requerida. Se puede pulsar la tecla `Esc` para cerrar el diálogo modal.
 
@@ -290,6 +332,127 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 </Modal>
 ```
     
+## `Form`
+
+> Formulario de datos.
+
+Debe usarse dentro de una página o componente cliente, que posea `'use client'`
+
+```js
+import { Form } from "@/components/simpleui";
+
+<Form
+    data={{ empresa: "Junta Andalucía", cargo: "Gerente" }}
+    className="border border-slate-100 shadow-lg rounded-md p-8 w-3/4 mx-auto"
+/>
+```
+
+
+
+```js
+import { Form as FormEmpleado } from "@/components/simpleui";
+
+
+<FormEmpleado
+    data={empleado}
+    action={updateEmpleado}
+    fields={[
+        {
+            name: "nombre",
+            label: "Nombre",
+            component: "InputText"
+        },
+        {
+            name: "habilidades",
+            label: "Habilidades",
+            component: "InputGroup",
+            props: {
+                radio: false,
+                values: [
+                    ["leer", empleado.habilidades.includes("leer")],
+                    ["cine", empleado.habilidades.includes("cine")],
+                    ["música", empleado.habilidades.includes("música")],
+                    ["deporte", empleado.habilidades.includes("deporte")]
+                ]
+            },
+        },
+    ]}
+/>
+```
+
+
+## `InputText`
+
+> Input de tipo `text`. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+
+```js
+<InputText name="nombre" label="Introduzca nombre:" />
+```
+
+## `InputNumber`
+
+> Input de tipo `number`. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+```js
+<InputNumber name="edad" label="Introduzca edad:" defaultValue={18} />
+```
+
+
+## `InputImage`
+
+> Input de tipo `file` personalizado para trabajar con archivos de imagen. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+
+## `InputCheck`
+
+> Input de tipo radio o checkbox. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+
+
+
+## `InputGroup`
+
+> Grupo de inputs de tipo radio o checkbox. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+
+```js
+<InputGroup
+    label="Habilidades"
+    name="habilidades"
+    values={[
+        ["leer", true],
+        ["deporte", false],
+        ["cine", true],
+        ["playa", true]
+    ]}
+    icon={<HeartIcon />}
+/>
+
+
+<InputGroup
+    radio
+    label="Nivel"
+    name="nivel"
+    values={[
+        ["amateur", false],
+        ["junior", false],
+        ["senior", true],
+        ["veterano", false]
+    ]}
+/>
+```
+
 
 # 6. Otras bibliotecas de UI más avanzadas
 
