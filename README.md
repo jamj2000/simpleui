@@ -21,18 +21,19 @@ Biblioteca de componentes de UI
   - [5.10. `Popover`](#510-popover)
   - [5.11. `Dropdown`](#511-dropdown)
   - [5.12. `Dropdown2`](#512-dropdown2)
-  - [`MainMenu`](#mainmenu)
-  - [`MenuLink`](#menulink)
-  - [5.13. `Modal`](#513-modal)
-  - [`Form`](#form)
-  - [`InputText`](#inputtext)
-  - [`InputNumber`](#inputnumber)
-  - [`InputImage`](#inputimage)
-  - [`InputCheck`](#inputcheck)
-  - [`InputGroup`](#inputgroup)
+  - [5.13. `MainMenu`](#513-mainmenu)
+  - [5.14. `MenuLink`](#514-menulink)
+  - [5.15. `Modal`](#515-modal)
+  - [5.16. `Form`](#516-form)
+  - [5.17. `InputText`](#517-inputtext)
+  - [5.18. `InputNumber`](#518-inputnumber)
+  - [5.19. `InputImage`](#519-inputimage)
+  - [5.20. `InputCheck`](#520-inputcheck)
+  - [5.21. `InputGroup`](#521-inputgroup)
 - [6. Otras bibliotecas de UI más avanzadas](#6-otras-bibliotecas-de-ui-más-avanzadas)
     - [6.0.1. DaisyUI](#601-daisyui)
     - [6.0.2. Shadcn](#602-shadcn)
+
 
 
 
@@ -308,16 +309,16 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 </Dropdown2>
 ```
 
-## `MainMenu`
+## 5.13. `MainMenu`
 
 
 
-## `MenuLink`
+## 5.14. `MenuLink`
 
 
 
 
-## 5.13. `Modal`
+## 5.15. `Modal`
 
 > Ventana o panel superpuesto que interrumpe temporalmente la interacción con el resto de la interfaz hasta que el usuario lo cierra o completa la acción requerida. Se puede pulsar la tecla `Esc` para cerrar el diálogo modal.
 
@@ -332,7 +333,7 @@ Las propiedades disponibles son: `type`, `size`, `color`.
 </Modal>
 ```
     
-## `Form`
+## 5.16. `Form`
 
 > Formulario de datos.
 
@@ -381,7 +382,7 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 ```
 
 
-## `InputText`
+## 5.17. `InputText`
 
 > Input de tipo `text`. 
 > Probablemente no necesites usar este componente directamente.  
@@ -392,7 +393,7 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 <InputText name="nombre" label="Introduzca nombre:" />
 ```
 
-## `InputNumber`
+## 5.18. `InputNumber`
 
 > Input de tipo `number`. 
 > Probablemente no necesites usar este componente directamente.  
@@ -403,14 +404,14 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 ```
 
 
-## `InputImage`
+## 5.19. `InputImage`
 
 > Input de tipo `file` personalizado para trabajar con archivos de imagen. 
 > Probablemente no necesites usar este componente directamente.  
 > La mayoría de las veces usarás este componente desde `Form`. 
 
 
-## `InputCheck`
+## 5.20. `InputCheck`
 
 > Input de tipo radio o checkbox. 
 > Probablemente no necesites usar este componente directamente.  
@@ -419,7 +420,7 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 
 
 
-## `InputGroup`
+## 5.21. `InputGroup`
 
 > Grupo de inputs de tipo radio o checkbox. 
 > Probablemente no necesites usar este componente directamente.  
