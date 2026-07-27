@@ -1,0 +1,27 @@
+{
+  "name": "simpleui",
+  "version": "0.1.0",
+  "description": "Simple UI",
+  "keywords": [
+    "ui",
+    "components",
+    "ssr",
+    "next.js",
+    "tailwind"
+  ],
+  "homepage": "https://github.com/jamj2000/simpleui#readme",
+  "bugs": {
+    "url": "https://github.com/jamj2000/simpleui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamj2000/simpleui.git"
+  },
+  "license": "MIT",
+  "author": "José Antonio Muñoz Jiménez",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
