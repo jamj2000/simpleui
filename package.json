@@ -1,31 +1,34 @@
 {
   "name": "simpleui.dev",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Simple UI - Next.js component library and CLI",
   "keywords": [
+    "react",
+    "nextjs",
+    "next",
     "ui",
     "components",
-    "ssr",
-    "next.js",
-    "tailwind"
+    "tailwindcss",
+    "design-system",
+    "cli",
+    "ssr"
   ],
   "type": "module",
-  "main": "./index.js",
+  "main": "./components/index.js",
   "exports": {
-    ".": "./index.js"
+    ".": "./components/index.js"
   },
   "bin": {
-    "simpleui": "cli/index.js"
+    "simpleui": "./cli/index.js"
   },
   "files": [
-    "index.js",
-    "components",
     "cli",
+    "components",
     "README.md",
     "LICENSE.md"
   ],
   "scripts": {
-    "test": "echo \"No tests\" && exit 1"
+    "test": "echo \"No tests yet\""
   },
   "dependencies": {
     "commander": "^15.0.0",

@@ -64,7 +64,8 @@ Existe una [aplicación web de ejemplo](https://simpleui-app.vercel.app/) desarr
 # 4. Descarga y uso de Simple UI
 
 ```bash
-npx simpleui init
+npx  simpleui.dev  init
+npx  simpleui.dev  list
 ```
 
 ```js
