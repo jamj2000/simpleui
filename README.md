@@ -5,31 +5,32 @@ Biblioteca de componentes de UI para Next.js
 - [1. Motivación](#1-motivación)
 - [2. Principios](#2-principios)
 - [3. App de ejemplo](#3-app-de-ejemplo)
-- [Descarga y uso de Simple UI](#descarga-y-uso-de-simple-ui)
-  - [5.1. `Alert`,](#51-alert)
-  - [5.2. `Badge`](#52-badge)
-  - [5.3. `Button`](#53-button)
-  - [5.4. `Submit`](#54-submit)
-  - [5.5. `Separator`](#55-separator)
-  - [5.6. `Space`](#56-space)
-  - [5.7. `Spinner`](#57-spinner)
-  - [5.8. `Skeleton`](#58-skeleton)
-  - [5.9. `Tooltip`](#59-tooltip)
-  - [5.10. `Popover`](#510-popover)
-  - [5.11. `Dropdown`](#511-dropdown)
-  - [5.12. `Dropdown2`](#512-dropdown2)
-  - [5.13. `MainMenu`](#513-mainmenu)
-  - [5.14. `MenuLink`](#514-menulink)
-  - [5.15. `Modal`](#515-modal)
-  - [5.16. `Form`](#516-form)
-  - [5.17. `InputText`](#517-inputtext)
-  - [5.18. `InputNumber`](#518-inputnumber)
-  - [5.19. `InputImage`](#519-inputimage)
-  - [5.20. `InputCheck`](#520-inputcheck)
-  - [5.21. `InputGroup`](#521-inputgroup)
-- [6. Otras bibliotecas de UI más avanzadas](#6-otras-bibliotecas-de-ui-más-avanzadas)
-    - [6.0.1. DaisyUI](#601-daisyui)
-    - [6.0.2. Shadcn](#602-shadcn)
+- [4. Descarga y uso de Simple UI](#4-descarga-y-uso-de-simple-ui)
+  - [4.1. `Alert`,](#41-alert)
+  - [4.2. `Badge`](#42-badge)
+  - [4.3. `Button`](#43-button)
+  - [4.4. `Submit`](#44-submit)
+  - [4.5. `Separator`](#45-separator)
+  - [4.6. `Space`](#46-space)
+  - [4.7. `Spinner`](#47-spinner)
+  - [4.8. `Skeleton`](#48-skeleton)
+  - [4.9. `Tooltip`](#49-tooltip)
+  - [4.10. `Popover`](#410-popover)
+  - [4.11. `Dropdown`](#411-dropdown)
+  - [4.12. `Dropdown2`](#412-dropdown2)
+  - [4.13. `MainMenu`](#413-mainmenu)
+  - [4.14. `MenuLink`](#414-menulink)
+  - [4.15. `Modal`](#415-modal)
+  - [4.16. `Form`](#416-form)
+  - [4.17. `InputText`](#417-inputtext)
+  - [4.18. `InputNumber`](#418-inputnumber)
+  - [4.19. `InputImage`](#419-inputimage)
+  - [4.20. `InputCheck`](#420-inputcheck)
+  - [4.21. `InputGroup`](#421-inputgroup)
+- [5. Otras bibliotecas de UI más avanzadas](#5-otras-bibliotecas-de-ui-más-avanzadas)
+    - [5.0.1. DaisyUI](#501-daisyui)
+    - [5.0.2. Shadcn](#502-shadcn)
+
 
 
 
@@ -60,7 +61,7 @@ Existe una [aplicación web de ejemplo](https://simpleui-app.vercel.app/) desarr
 
 
 
-# Descarga y uso de Simple UI
+# 4. Descarga y uso de Simple UI
 
 ```bash
 npx simpleui init
@@ -98,7 +99,7 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 > A continuación se muestran los **componentes disponibles, organizados de manera *casi alfabética*, agrupando los componentes similares.**
 
 
-## 5.1. `Alert`, 
+## 4.1. `Alert`, 
 
 > Información con color de fondo.  
 
@@ -127,7 +128,7 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 </Alert>
 ```
 
-## 5.2. `Badge`
+## 4.2. `Badge`
 
 > Insignia con color de fondo. 
 
@@ -149,7 +150,7 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 ```
 
 
-## 5.3. `Button`
+## 4.3. `Button`
 
 > Botón con **funcionalidad ejecutable en el navegador** (cliente). La función a ejecutar se pasa en la propiedad `onClick`. 
 
@@ -160,7 +161,7 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 ```
 
 
-## 5.4. `Submit`
+## 4.4. `Submit`
 
 > Botón **asociado a un formulario** con **funcionalidad ejecutable en el servidor**. La función a ejecutar se pasa en el propiedad `formAction`.
 > 
@@ -185,7 +186,7 @@ formData.append("pais", "Mexico");
 > En este caso, a la función a ejecutar se la conoce como **acción del servidor** asociada a un formulario y, como su nombre indica, su código se ejecuta en el backend, normalmente para gestionar información enviada por el usuario y para realizar operaciones sobre bases de datos compartidas la mayor parte de las veces. 
  
 
-## 5.5. `Separator`
+## 4.5. `Separator`
 
 > Línea de separación.  
 > Variantes soportadas: `horizontal`, `vertical`. Por defecto horizontal.
@@ -200,7 +201,7 @@ formData.append("pais", "Mexico");
 </div>
 ```
 
-## 5.6. `Space`
+## 4.6. `Space`
 
 > Espacio de separación vertical entre elementos.
 
@@ -209,7 +210,7 @@ formData.append("pais", "Mexico");
 ```
 
 
-## 5.7. `Spinner`
+## 4.7. `Spinner`
 
 > Indicador visual de carga que muestra que una operación está en curso, sin informar del progreso exacto ni del tiempo restante. Hay disponibles 8 tipos, desde 0 a 7. 
 
@@ -254,7 +255,7 @@ formData.append("pais", "Mexico");
 >```
 
 
-## 5.8. `Skeleton`
+## 4.8. `Skeleton`
 
 > Es un marcador de posición que reproduce la estructura aproximada del contenido que aún se está cargando.  
 > No admite propiedades de personalización.  
@@ -272,7 +273,7 @@ formData.append("pais", "Mexico");
 >
 > Los 4 componentes siguientes permiten la personalización de su posición. Para ello debes modificar, en el código de la biblioteca, las clases `top-*`, `left-*`, `right-*`, `botton-*` que aparecen después de la clase `absolute`.
 
-## 5.9. `Tooltip`
+## 4.9. `Tooltip`
 
 > Pequeño mensaje informativo flotante que aparece al hacer `hover` sobre el elemento contenedor padre, el cual debe tener className `group relative` para el correcto funcionamiento. La finalidad principal de los `Tooltip`s es mostrar información de ayuda.
 
@@ -289,7 +290,7 @@ formData.append("pais", "Mexico");
 ``` 
 
 
-## 5.10. `Popover`
+## 4.10. `Popover`
 
 > Panel flotante que aparece al hacer `hover` sobre `title` del Popover. Es similar al `Tooltip`, aunque suele usarse con paneles que contienen mayor cantidad información.
 
@@ -305,7 +306,7 @@ formData.append("pais", "Mexico");
 ```
 
 
-## 5.11. `Dropdown`
+## 4.11. `Dropdown`
 
 > El panel flotante permanece abierto después del `hover`. Para cerrar el panel basta con pulsar fuera del `Dropdown`.
 
@@ -321,7 +322,7 @@ formData.append("pais", "Mexico");
 ```
 
 
-## 5.12. `Dropdown2`
+## 4.12. `Dropdown2`
 
 > Similar a `Dropdown`. A diferencia del anterior, para cerrar el panel es necesario volver a hacer click en el `title`, no funciona pulsar fuera de `Dropdown2`. Se usa cuando queremos que el panel esté visible mientras interactuamos con el resto de la página.
 
@@ -336,16 +337,16 @@ formData.append("pais", "Mexico");
 </Dropdown2>
 ```
 
-## 5.13. `MainMenu`
+## 4.13. `MainMenu`
 
 
 
-## 5.14. `MenuLink`
+## 4.14. `MenuLink`
 
 
 
 
-## 5.15. `Modal`
+## 4.15. `Modal`
 
 > Ventana o panel superpuesto que interrumpe temporalmente la interacción con el resto de la interfaz hasta que el usuario lo cierra o completa la acción requerida. Se puede pulsar la tecla `Esc` para cerrar el diálogo modal.
 
@@ -360,7 +361,7 @@ formData.append("pais", "Mexico");
 </Modal>
 ```
     
-## 5.16. `Form`
+## 4.16. `Form`
 
 > Formulario de datos.
 
@@ -408,7 +409,7 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 ```
 
 
-## 5.17. `InputText`
+## 4.17. `InputText`
 
 > Input de tipo `text`. 
 > Probablemente no necesites usar este componente directamente.  
@@ -419,7 +420,7 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 <InputText name="nombre" label="Introduzca nombre:" />
 ```
 
-## 5.18. `InputNumber`
+## 4.18. `InputNumber`
 
 > Input de tipo `number`. 
 > Probablemente no necesites usar este componente directamente.  
@@ -430,14 +431,14 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 ```
 
 
-## 5.19. `InputImage`
+## 4.19. `InputImage`
 
 > Input de tipo `file` personalizado para trabajar con archivos de imagen. 
 > Probablemente no necesites usar este componente directamente.  
 > La mayoría de las veces usarás este componente desde `Form`. 
 
 
-## 5.20. `InputCheck`
+## 4.20. `InputCheck`
 
 > Input de tipo radio o checkbox. 
 > Probablemente no necesites usar este componente directamente.  
@@ -446,7 +447,7 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 
 
 
-## 5.21. `InputGroup`
+## 4.21. `InputGroup`
 
 > Grupo de inputs de tipo radio o checkbox. 
 > Probablemente no necesites usar este componente directamente.  
@@ -481,15 +482,15 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 ```
 
 
-# 6. Otras bibliotecas de UI más avanzadas
+# 5. Otras bibliotecas de UI más avanzadas
 
 Si ya usaste `Simple UI` y aprendiste a gestionar tus propios componentes usando como base esta biblioteca realizando modificaciones o ampliaciones con nuevos componentes personales, editando JSX y estilos, y quieres ir más allá. Bibliotecas más avanzadas con filosofías muy diferentes son las siguientes.
 
-### 6.0.1. [DaisyUI](https://daisyui.com/)
+### 5.0.1. [DaisyUI](https://daisyui.com/)
 
 - Se basa en nuevas `clases de utilidad` proporcionadas.
 
 
-### 6.0.2. [Shadcn](https://www.shadcn.io/)
+### 5.0.2. [Shadcn](https://www.shadcn.io/)
 
 - Se basa en nuevos `componentes` y usar composición de forma masiva.
