@@ -19,9 +19,23 @@
   },
   "license": "MIT",
   "author": "José Antonio Muñoz Jiménez",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "bin": {
+    "simpleui": "./cli/index.js"
+  },
+  "files": [
+    "cli",
+    "components"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "readline-sync": "^1.4.10"
   }
 }

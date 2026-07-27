@@ -9,7 +9,7 @@ App ejemplo: https://github.com/jamj2000/simpleui-app
 */
 
 
-export * from "./server";
-export * from "./client";
+export * from "./components/server";
+export * from "./components/client";
 
 
