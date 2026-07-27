@@ -52,12 +52,15 @@ async function getComponentFiles(dir, base = dir) {
 
     if (
       entry.isFile() &&
-      entry.name.endsWith(".jsx")
+      (
+        entry.name.endsWith(".jsx") ||
+        entry.name === "index.js"
+      )
     ) {
       files.push({
         source: fullPath,
         relative: path.relative(base, fullPath),
-        name: path.basename(entry.name, ".jsx"),
+        name: path.basename(entry.name, path.extname(entry.name))
       });
     }
   }
@@ -81,43 +84,35 @@ async function askOverwrite(file) {
   return answer === "y" || answer === "yes";
 }
 
-async function copyComponent(component, targetDir) {
-  const destination = path.join(
-    targetDir,
-    component.relative
-  );
+async function getComponentFiles(dir, base = dir) {
+  const entries = await fs.readdir(dir, {
+    withFileTypes: true,
+  });
 
-  await fs.mkdir(
-    path.dirname(destination),
-    {
-      recursive: true,
+  const files = [];
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      files.push(...await getComponentFiles(fullPath, base));
     }
-  );
 
-  try {
-    await fs.access(destination);
-
-    const overwrite = await askOverwrite(
-      component.relative
-    );
-
-    if (!overwrite) {
-      console.log(`Skipped ${component.relative}`);
-      return false;
+    if (
+      entry.isFile() &&
+      entry.name.endsWith(".jsx")
+    ) {
+      files.push({
+        source: fullPath,
+        relative: path.relative(base, fullPath),
+        name: path.basename(entry.name, ".jsx"),
+      });
     }
-  } catch {
-    // no existe, continuar
   }
 
-  await fs.copyFile(
-    component.source,
-    destination
-  );
-
-  console.log(`✓ ${component.relative}`);
-
-  return true;
+  return files;
 }
+
 
 export async function addComponents(requested) {
   const targetDir = await findTargetDirectory();
@@ -189,4 +184,59 @@ export async function getAvailableComponents() {
     name: component.name,
     path: component.relative,
   }));
+}
+
+
+export async function copyIndexes() {
+  const targetDir = await findTargetDirectory();
+
+  async function copy(dir, base = dir) {
+    const entries = await fs.readdir(dir, {
+      withFileTypes: true,
+    });
+
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+
+      if (entry.isDirectory()) {
+        await copy(fullPath, base);
+        continue;
+      }
+
+      if (entry.name !== "index.js") {
+        continue;
+      }
+
+      const relative = path.relative(base, fullPath);
+
+      const destination = path.join(
+        targetDir,
+        "simpleui",
+        relative
+      );
+
+      await fs.mkdir(path.dirname(destination), {
+        recursive: true,
+      });
+
+      try {
+        await fs.access(destination);
+
+        const overwrite = await askOverwrite(relative);
+
+        if (!overwrite) {
+          console.log(`Skipped ${relative}`);
+          continue;
+        }
+      } catch {
+        // no existe
+      }
+
+      await fs.copyFile(fullPath, destination);
+
+      console.log(`✓ ${relative}`);
+    }
+  }
+
+  await copy(sourceDir);
 }

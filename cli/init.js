@@ -1,7 +1,11 @@
-import { addComponents } from "./add.js";
+import { addComponents, copyIndexes } from "./add.js";
 
 export async function init() {
-  console.log("Adding all SimpleUI components...\n");
+  console.log("Adding SimpleUI...\n");
 
   await addComponents(["*"]);
+
+  await copyIndexes();
+
+  console.log("\nSimpleUI installed successfully.");
 }
