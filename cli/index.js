@@ -30,15 +30,6 @@ program
   .name("simpleui")
   .version(packageJson.version);
 
-program.parse();
-
-// const program = new Command();
-
-// program
-//   .name("simpleui")
-//   .version("0.1.4");
-
-
 program
   .command("init")
   .description("Add all components")
