@@ -1,6 +1,6 @@
 {
   "name": "simpleui.dev",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Simple UI - Next.js component library and CLI",
   "keywords": [
     "ui",
@@ -15,7 +15,7 @@
     ".": "./index.js"
   },
   "bin": {
-    "simpleui": "./cli/index.js"
+    "simpleui": "cli/index.js"
   },
   "files": [
     "index.js",
