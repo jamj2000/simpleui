@@ -1,18 +1,17 @@
 "use client";
 
-import { useActionState, useEffect, useRef, useId } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 
-// 1. Importas todos los componentes de UI disponibles
-import {
-    InputText,
-    InputNumber,
-    InputGroup,
-    Submit,
-    BadgeError
-} from "@/components/simpleui";
+// Importamos todos los componentes de UI disponibles
+import { InputText } from "../server/InputText";
+import { InputNumber } from "../server/InputNumber";
+import { InputGroup } from "../server/InputGroup";
+import { Submit } from "../server/Submit";
+import { Badge } from "../server/Badge";
 
-// 2. Creas el mapa que relaciona el nombre (String) con el componente (React)
+
+// Creamos el mapa que relaciona el nombre (String) con el componente (React)
 const COMPONENT_MAP = {
     InputText,
     InputNumber,
@@ -26,35 +25,30 @@ const fields = [
     {
         name: "nombre",
         label: "Nombre",
-        type: "text",
         component: "InputText"
     },
     {
         name: "empresa",
         label: "Empresa",
-        type: "text",
         component: "InputText"
     },
 
     {
         name: "cargo",
         label: "Cargo",
-        type: "text",
         component: "InputText"
     },
     {
         name: "habilidades",
         label: "Habilidades",
         component: "InputGroup",
-        props: {
-            radio: false,
-            values: [
-                ["leer", false],
-                ["cine", true],
-                ["música", true],
-                ["deporte", false]
-            ]
-        },
+        radio: false,
+        values: [
+            ["leer", false],
+            ["cine", true],
+            ["música", true],
+            ["deporte", false]
+        ]
     },
 ];
 
@@ -71,7 +65,6 @@ export const Form = ({
 }) => {
     const [state, formAction, isPending] = useActionState(action, null);
     const formRef = useRef(null);
-    const formId = useId();
 
     useEffect(() => {
         if (!state) return;
@@ -86,8 +79,8 @@ export const Form = ({
     }, [state]);
 
     return (
-        <form ref={formRef} id={formId} action={formAction} className={className}>
-            <input type="hidden" name="id" defaultValue={data.id ?? 0} />
+        <form ref={formRef} action={formAction} className={className}>
+            <input type="hidden" name="id" defaultValue={data.id} />
 
             {fields.map((field) => {
                 // 3. Resolvemos el componente según el string pasado en 'field.component'
@@ -98,25 +91,26 @@ export const Form = ({
                 const errorCampo = state?.errors?.[field.name];
 
                 return (
-                    <div key={field.name} className="flex flex-col gap-1">
+                    <div key={field.name} className="flex flex-col gap-1 my-6">
                         <ComponenteUI
                             label={field.label}
                             name={field.name}
                             defaultValue={valorDefault}
                             disabled={disabled || field.disabled}
-                            {...field.props} // Pasa cualquier prop extra específica que necesites
+                            {...field} // Pasa cualquier otro campo
                         />
 
                         {errorCampo && (
-                            <BadgeError>{errorCampo}</BadgeError>
+                            <Badge type="error">{errorCampo}</Badge>
                         )}
                     </div>
                 );
             })}
 
-            <Submit disabled={isPending || disabled}>
-                {isPending ? "Guardando..." : "Guardar"}
+            <Submit disabled={isPending || disabled} className="w-full">
+                {isPending ? <span className="animate-pulse">Espere por favor...</span> : "Aceptar"}
             </Submit>
+
         </form>
     );
 };

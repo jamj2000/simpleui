@@ -1,14 +1,11 @@
 # Simple UI <!-- omit in toc -->
 
-Biblioteca de componentes de UI
+Biblioteca de componentes de UI para Next.js
 
 - [1. Motivación](#1-motivación)
 - [2. Principios](#2-principios)
 - [3. App de ejemplo](#3-app-de-ejemplo)
-- [4. Documentación](#4-documentación)
-  - [4.1. Instalación de Simple UI](#41-instalación-de-simple-ui)
-  - [4.2. Importar componentes deseados](#42-importar-componentes-deseados)
-- [5. Ejemplos de uso](#5-ejemplos-de-uso)
+- [Descarga y uso de Simple UI](#descarga-y-uso-de-simple-ui)
   - [5.1. `Alert`,](#51-alert)
   - [5.2. `Badge`](#52-badge)
   - [5.3. `Button`](#53-button)
@@ -62,26 +59,38 @@ El código de este proyecto se mantendrá en todo momento lo más simple posible
 Existe una [aplicación web de ejemplo](https://simpleui-app.vercel.app/) desarrollada con Next.js/Tailwind cuyo código está disponible en [Simple UI App](https://github.com/jamj2000/simpleui-app). Ahí encontrarás también el enlace a la app desplegada para comprobar su funcionalidad.
 
 
-# 4. Documentación
 
+# Descarga y uso de Simple UI
 
-## 4.1. Instalación de Simple UI
-
-```sh
-cd components
-
-git clone https://github.com/jamj2000/simpleui
-
-rm -rf simpleui/.git
+```bash
+npx simpleui init
 ```
-
-## 4.2. Importar componentes deseados 
 
 ```js
-import { Alert, Button, Submit, Spinner } from "@/components/simpleui"
+import { Alert, Button, Form } from "@/componentes/simpleui";
 ```
 
-# 5. Ejemplos de uso
+
+> [!note]
+>
+> Todos los componentes se descargaran a la carpeta `src/components/simpleui` o `components/simpleui` según tengas configurado tu proyecto.
+
+
+> [!caution]
+>
+> **Opción incompatible con la anterior**
+> 
+> Este paquete también puede instalarse (dentro de `node_modules`) pero perderás la posibilidad de editar y personalizar los componentes. 
+> 
+> ```bash
+> npm install simpleui.dev
+> ```
+>
+> ```js
+> import { Alert, Button, Form } from "simpleui.dev";
+> ```
+
+
 
 
 > [!NOTE]
@@ -93,37 +102,50 @@ import { Alert, Button, Submit, Spinner } from "@/components/simpleui"
 
 > Información con color de fondo.  
 
+**Propiedades:**
+
+| Nombre | Valores                       | Por defecto |
+| ------ | ----------------------------- | ----------- |
+| `type` | info, success, warning, error | info        |
+
 
 ```jsx
-<AlertInfo> 
+<Alert type="info"> 
 <strong>¡Nota!</strong> Este es un mensaje de información.
-</AlertInfo>
+</Alert>
 
-<AlertSuccess> 
+<Alert type="success"> 
 <strong>¡Éxito!</strong> Este es un mensaje de éxito.
-</AlertSuccess>
+</Alert>
 
-<AlertWarning> 
+<Alert type="warning"> 
 <strong>¡Aviso!</strong> Este es un mensaje de aviso.
-</AlertWarning>
+</Alert>
 
-<AlertError> 
+<Alert type="error"> 
 <strong>¡Error!</strong> Este es un mensaje de error.
-</AlertError>
+</Alert>
 ```
 
 ## 5.2. `Badge`
 
 > Insignia con color de fondo. 
 
+**Propiedades:**
+
+| Nombre | Valores                       | Por defecto |
+| ------ | ----------------------------- | ----------- |
+| `type` | info, success, warning, error | info        |
+
+
 ```jsx
-<BadgeInfo>Nota</BadgeInfo>
+<Badge type="info">Nota</Badge>
 
-<BadgeSuccess>Éxito</BadgeSuccess>
+<Badge type="success">Éxito</Badge>
 
-<BadgeWarning>Aviso</BadgeWarning>
+<Badge type="warning">Aviso</Badge>
 
-<BadgeError>Error</BadgeError>
+<Badge type="error">Error</Badge>
 ```
 
 
@@ -193,11 +215,16 @@ formData.append("pais", "Mexico");
 
 ![Tipos](spinners.png)
 
-Las propiedades disponibles son: `type`, `size`, `color`.
+**Propiedades:**
 
-- `type` debe ser un valor entre 0 y 7. Si no se indica, **por defecto es `0`**.
-- `size` es el tamaño. Se multiplica por 4 para seguir convenio de tailwind. Si no se indica, **por defecto es `10`**.
-- `color` es el color de primer plano, tanto para modo claro como oscuro. Sigue convenio de tailwind. Si no se indica, por **defecto es `text-black dark:text-white`**.
+| Nombre  | Valores         | Por defecto                |
+| ------- | --------------- | -------------------------- |
+| `type`  | 0,1,2,3,4,5,6,7 | 0                          |
+| `size`  |                 | 10                         |
+| `color` |                 | text-black dark:text-white |
+
+
+`color` es el color de primer plano, tanto para modo claro como oscuro. Sigue convenio de tailwind. 
 
 
 ```jsx
@@ -361,21 +388,20 @@ import { Form as FormEmpleado } from "@/components/simpleui";
         {
             name: "nombre",
             label: "Nombre",
-            component: "InputText"
+            component: "InputText",
+            // disable: true,
         },
         {
             name: "habilidades",
             label: "Habilidades",
             component: "InputGroup",
-            props: {
-                radio: false,
-                values: [
-                    ["leer", empleado.habilidades.includes("leer")],
-                    ["cine", empleado.habilidades.includes("cine")],
-                    ["música", empleado.habilidades.includes("música")],
-                    ["deporte", empleado.habilidades.includes("deporte")]
-                ]
-            },
+            radio: false,
+            values: [
+                ["leer", empleado.habilidades.includes("leer")],
+                ["cine", empleado.habilidades.includes("cine")],
+                ["música", empleado.habilidades.includes("música")],
+                ["deporte", empleado.habilidades.includes("deporte")]
+            ]
         },
     ]}
 />

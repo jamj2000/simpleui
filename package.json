@@ -1,7 +1,7 @@
 {
-  "name": "simpleui",
+  "name": "simpleui.dev",
   "version": "0.1.0",
-  "description": "Simple UI",
+  "description": "Simple UI - Next.js component library and CLI",
   "keywords": [
     "ui",
     "components",
@@ -9,16 +9,6 @@
     "next.js",
     "tailwind"
   ],
-  "homepage": "https://github.com/jamj2000/simpleui#readme",
-  "bugs": {
-    "url": "https://github.com/jamj2000/simpleui/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jamj2000/simpleui.git"
-  },
-  "license": "MIT",
-  "author": "José Antonio Muñoz Jiménez",
   "type": "module",
   "main": "./index.js",
   "exports": {
@@ -28,14 +18,27 @@
     "simpleui": "./cli/index.js"
   },
   "files": [
+    "index.js",
+    "components",
     "cli",
-    "components"
+    "README.md",
+    "LICENSE.md"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests\" && exit 1"
   },
   "dependencies": {
     "commander": "^15.0.0",
     "readline-sync": "^1.4.10"
+  },
+  "license": "MIT",
+  "author": "José Antonio Muñoz Jiménez",
+  "homepage": "https://github.com/jamj2000/simpleui#readme",
+  "bugs": {
+    "url": "https://github.com/jamj2000/simpleui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamj2000/simpleui.git"
   }
 }
