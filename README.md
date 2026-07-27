@@ -78,26 +78,8 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 > Todos los componentes se descargaran a la carpeta `src/components/simpleui` o `components/simpleui` según tengas configurado tu proyecto.
 
 
-> [!caution]
->
-> **Opción incompatible con la anterior**
-> 
-> Este paquete también puede instalarse (dentro de `node_modules`) pero perderás la posibilidad de editar y personalizar los componentes. 
-> 
-> ```bash
-> npm install simpleui.dev
-> ```
->
-> ```js
-> import { Alert, Button, Form } from "simpleui.dev";
-> ```
 
-
-
-
-> [!NOTE]
->
-> A continuación se muestran los **componentes disponibles, organizados de manera *casi alfabética*, agrupando los componentes similares.**
+A continuación se muestran los **componentes disponibles, organizados de manera *casi alfabética*, agrupando los componentes similares.**
 
 
 ## 4.1. `Alert`, 
