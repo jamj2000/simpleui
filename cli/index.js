@@ -9,7 +9,7 @@ const program = new Command();
 
 program
   .name("simpleui")
-  .version("0.1.2pk");
+  .version("0.1.3");
 
 program
   .command("init")
