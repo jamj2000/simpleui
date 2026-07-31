@@ -21,15 +21,17 @@ Biblioteca de componentes de UI para Next.js
   - [4.13. `MainMenu`](#413-mainmenu)
   - [4.14. `MenuLink`](#414-menulink)
   - [4.15. `Modal`](#415-modal)
-  - [4.16. `Form`](#416-form)
+  - [4.16. `InputHidden`](#416-inputhidden)
   - [4.17. `InputText`](#417-inputtext)
   - [4.18. `InputNumber`](#418-inputnumber)
   - [4.19. `InputImage`](#419-inputimage)
   - [4.20. `InputCheck`](#420-inputcheck)
   - [4.21. `InputGroup`](#421-inputgroup)
+  - [4.22. `Form`](#422-form)
 - [5. Otras bibliotecas de UI más avanzadas](#5-otras-bibliotecas-de-ui-más-avanzadas)
     - [5.0.1. DaisyUI](#501-daisyui)
     - [5.0.2. Shadcn](#502-shadcn)
+
 
 
 
@@ -47,11 +49,10 @@ Se persigue que el alumno sea capaz de usar, modificar y ampliar su conjunto per
 
 El código de este proyecto se mantendrá en todo momento lo más simple posible siguiendo los siguientes principios: 
 
-- Carácter didáctico.
+- Finalidad didáctica.
 - Pensado para Next.js/TailwindCSS y SSR.
 - Soporte de modos claro/oscuro.
-- Descargar.
-- Modificar y/o ampliar para adaptar a cada proyecto.
+- Descargar y Modificar y/o Ampliar para adaptar a cada proyecto.
 
 
 
@@ -343,8 +344,125 @@ formData.append("pais", "Mexico");
 
 </Modal>
 ```
-    
-## 4.16. `Form`
+
+## 4.16. `InputHidden`
+
+> Input de tipo `hidden`. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+
+```js
+<InputHidden    
+    name="id"
+    value={1}  
+/>
+```
+
+
+
+## 4.17. `InputText`
+
+> Input de tipo `text`. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+
+```js
+<InputText 
+    label="Introduzca nombre:" 
+    name="nombre"
+    value="José"  
+    disabled 
+/>
+```
+
+## 4.18. `InputNumber`
+
+> Input de tipo `number`. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+```js
+<InputNumber
+    label="Introduzca edad:" 
+    name="edad"  
+    value={18} 
+/>
+```
+
+
+## 4.19. `InputImage`
+
+> Input de tipo `file` personalizado para trabajar con archivos de imagen. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+
+## 4.20. `InputCheck`
+
+> Input de tipo radio o checkbox. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `InputGroup` o `Form`. 
+
+```js
+<InputCheck
+    label="Amateur" 
+    name="amateur"  
+    value="amateur"
+    checked={true} 
+/>
+
+
+<InputCheck
+    multiple={true}
+    label="Acepto las condiciones" 
+    name="condiciones"  
+    value="condiciones"
+    checked={false} 
+/>
+```
+
+
+## 4.21. `InputGroup`
+
+> Grupo de inputs de tipo radio o checkbox. 
+> Probablemente no necesites usar este componente directamente.  
+> La mayoría de las veces usarás este componente desde `Form`. 
+
+
+```js
+<InputGroup
+    label="Nivel"
+    name="nivel"    
+    options={[
+        // [label, value, checked]
+        ["Amateur", "amateur", false],
+        ["Junior", "junior", false],
+        ["Senior", "senior", true],
+        ["Veterano", "veterano", false]
+    ]}
+/>
+
+
+<InputGroup
+    multiple
+    label="Habilidades"
+    name="habilidades"
+    options={[
+        // [label, value, checked]
+        ["Lectura", "leer", true],
+        ["La gran pantalla", "cine", false],
+        ["Buen ritmo", "música", false],
+        ["Actividad física","deporte", true]
+    ]}
+    icon={<HeartIcon />}
+/>
+```
+
+
+ 
+## 4.22. `Form`
 
 > Formulario de datos.
 
@@ -370,6 +488,11 @@ import { Form as FormEmpleado } from "@/components/simpleui";
     action={updateEmpleado}
     fields={[
         {
+            name: "id",
+            value: empleado.id
+            component: "InputHidden",
+        },
+        {
             name: "nombre",
             label: "Nombre",
             component: "InputText",
@@ -379,12 +502,13 @@ import { Form as FormEmpleado } from "@/components/simpleui";
             name: "habilidades",
             label: "Habilidades",
             component: "InputGroup",
-            radio: false,
-            values: [
-                ["leer", empleado.habilidades.includes("leer")],
-                ["cine", empleado.habilidades.includes("cine")],
-                ["música", empleado.habilidades.includes("música")],
-                ["deporte", empleado.habilidades.includes("deporte")]
+            multiple: true,
+            options: [
+                // [label, value, checked]
+                ["Lectura", "leer", empleado.habilidades.includes("leer")],
+                ["La gran pantalla", "cine", empleado.habilidades.includes("cine")],
+                ["Buen ritmo", "música", empleado.habilidades.includes("música")],
+                ["Actividad física","deporte", empleado.habilidades.includes("deporte")]
             ]
         },
     ]}
@@ -392,77 +516,6 @@ import { Form as FormEmpleado } from "@/components/simpleui";
 ```
 
 
-## 4.17. `InputText`
-
-> Input de tipo `text`. 
-> Probablemente no necesites usar este componente directamente.  
-> La mayoría de las veces usarás este componente desde `Form`. 
-
-
-```js
-<InputText name="nombre" label="Introduzca nombre:" />
-```
-
-## 4.18. `InputNumber`
-
-> Input de tipo `number`. 
-> Probablemente no necesites usar este componente directamente.  
-> La mayoría de las veces usarás este componente desde `Form`. 
-
-```js
-<InputNumber name="edad" label="Introduzca edad:" defaultValue={18} />
-```
-
-
-## 4.19. `InputImage`
-
-> Input de tipo `file` personalizado para trabajar con archivos de imagen. 
-> Probablemente no necesites usar este componente directamente.  
-> La mayoría de las veces usarás este componente desde `Form`. 
-
-
-## 4.20. `InputCheck`
-
-> Input de tipo radio o checkbox. 
-> Probablemente no necesites usar este componente directamente.  
-> La mayoría de las veces usarás este componente desde `Form`. 
-
-
-
-
-## 4.21. `InputGroup`
-
-> Grupo de inputs de tipo radio o checkbox. 
-> Probablemente no necesites usar este componente directamente.  
-> La mayoría de las veces usarás este componente desde `Form`. 
-
-
-```js
-<InputGroup
-    label="Habilidades"
-    name="habilidades"
-    values={[
-        ["leer", true],
-        ["deporte", false],
-        ["cine", true],
-        ["playa", true]
-    ]}
-    icon={<HeartIcon />}
-/>
-
-
-<InputGroup
-    radio
-    label="Nivel"
-    name="nivel"
-    values={[
-        ["amateur", false],
-        ["junior", false],
-        ["senior", true],
-        ["veterano", false]
-    ]}
-/>
-```
 
 
 # 5. Otras bibliotecas de UI más avanzadas
