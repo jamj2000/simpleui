@@ -12,18 +12,18 @@ const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1
 // String.prototype.toCapitalize = function () { return this.at(0).toUpperCase() + this.slice(1).toLowerCase() }
 
 
-export const InputCheck = ({ label = "", name, value, disabled, icon, multiple = false }) => (
+export const InputCheck = ({ label = "", name, value, checked, disabled, icon, multiple = false }) => (
     <label className="flex items-center gap-2 w-fit">
         <input
             type={multiple ? "checkbox" : "radio"}
             name={name}
-            value={value[0]}
-            defaultChecked={value[1]}
+            value={value}
+            defaultChecked={checked}
             disabled={disabled}
             className="hidden peer"
         />
         {icon ? icon : (multiple ? <SquareIcon /> : <CircleIcon />)}
-        <span className="peer-disabled:text-zinc-400">{capitalize(value[0])}</span>
+        <span className="peer-disabled:text-zinc-400">{label}</span>
     </label>
 )
 

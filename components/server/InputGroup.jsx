@@ -15,21 +15,24 @@ const classLabel = `absolute left-3.75 top-0 -translate-y-1/2
 export const InputGroup = ({
     label,
     name,
-    values,
+    options,
     disabled,
     icon,
     multiple
 }) => (
-    <fieldset className={classGroup} key={values.toString()}>
+    //  key={options.toString()}
+    <fieldset className={classGroup}>
         <legend className={`${classLabel} ${disabled ? "text-zinc-400" : ""}`}>{label}</legend>
         {/* <div className="grid  @lg:grid-cols-2 @xl:grid-cols-3 @2xl:grid-cols-4"> */}
         <div className="columns-md @md:columns-2 @2xl:columns-3">
-            {values?.map(([value, isChecked]) => (
+            {options?.map((option) => (
                 <InputCheck
                     multiple={multiple}
-                    key={value}
+                    key={option}
                     name={name}
-                    value={[value, isChecked]}
+                    label={option[0]}
+                    value={option[1]}
+                    checked={option[2]}
                     disabled={disabled}
                     icon={icon}
                 />

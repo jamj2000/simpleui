@@ -17,49 +17,44 @@ const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1
 
 
 
-export const InputSelect = ({ label = "", name, values, disabled, multiple, className = "" }) => {
+export const InputSelect = ({ label = "", name, options, disabled, multiple, className = "" }) => {
+
+    const labelSelect = label
 
     const getSelected = () =>
         multiple
-            ? values.filter(([, checked]) => checked).map(([v]) => v)
-            : values.findLast(([, checked]) => checked)?.[0] ?? "";
+            ? options.filter(([_label, value, checked]) => checked).map(([_label, value, _checked]) => value)
+            : options.findLast(([_label, value, checked]) => checked)?.[1] ?? options[0][1]
 
     const [selected, setSelected] = useState(getSelected);
-
-    useEffect(() => {
-        setSelected(getSelected());
-    }, [values, multiple])
-
-
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        setSelected(
-            multiple
-                ? values.filter(([, checked]) => checked).map(([v]) => v)
-                : values.findLast(([, checked]) => checked)?.[0] ?? values[0][0]
-        );
-    }, [values, multiple]);
+        setSelected(getSelected());
+    }, [options, multiple])
 
 
 
-    const Head = ({ value, disabled }) => (
+
+
+
+    const Head = ({ label, disabled }) => (
         <>
             <input
                 type="text"
-                value={value}
+                value={label}
                 readOnly
                 disabled={disabled}
                 className={`peer ${classInput}`}
             />
-            <span className={`peer-disabled:text-zinc-400 ${classLabel}`}>{multiple ? "Seleccione opciones" : label}</span>
+            <span className={`peer-disabled:text-zinc-400 ${classLabel}`}>{multiple ? "Seleccione opciones" : labelSelect}</span>
         </>
 
     )
 
 
 
-    const Input = ({ value }) => {
+    const Input = ({ label, value }) => {
 
         const checked = multiple
             ? selected.includes(value)
@@ -89,7 +84,7 @@ export const InputSelect = ({ label = "", name, values, disabled, multiple, clas
                     className="hidden peer"
                 />
                 <span className="mt-1 p-2 rounded-md peer-disabled:text-zinc-400 peer-checked:bg-slate-200 dark:peer-checked:bg-slate-700 w-full">
-                    {capitalize(value)}
+                    {label}
                 </span>
             </label>
         );
@@ -105,16 +100,19 @@ export const InputSelect = ({ label = "", name, values, disabled, multiple, clas
                 className={`cursor-pointer ${className}`}
             >
                 <Head
-                    value={multiple
-                        ? selected.map(capitalize).join(", ")
-                        : capitalize(selected)
+                    label={multiple
+                        ? options
+                            .filter(([_label, value]) => selected.includes(value))
+                            .map(([lbl]) => lbl)
+                            .join(", ")
+                        : options.find(([_label, value]) => value === selected)?.[0] ?? ""
                     }
                     disabled={disabled}
                 />
             </div>
 
             <div className={`z-10 absolute top-full left-0 mt-1 w-full ${open ? "block" : "hidden"} focus-within:block group-focus-within:block rounded-lg bg-white dark:bg-zinc-800 border border-slate-200 dark:border-slate-700 p-4 shadow-xl`}>
-                {values.map(([value, _]) => <Input key={value} value={value} />)}
+                {options.map(([label, value, _]) => <Input key={value} label={label} value={value} />)}
             </div>
         </div>
 
