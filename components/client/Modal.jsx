@@ -2,7 +2,7 @@
 'use client'
 import { useRef } from 'react'
 
-export const Modal = ({ children, trigger }) => {
+export const Modal = ({ children, trigger, className = "" }) => {
     const dialogRef = useRef(null)
 
     const openDialog = () => dialogRef.current?.showModal()
@@ -20,7 +20,7 @@ export const Modal = ({ children, trigger }) => {
             {/* Wrapper accesible para el trigger */}
             <div
                 onClick={openDialog}
-                className="inline-block w-fit cursor-pointer"
+                className={`inline-block w-fit cursor-pointer ${className}`}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && openDialog()}
