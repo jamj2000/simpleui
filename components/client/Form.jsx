@@ -94,15 +94,16 @@ export const Form = ({
 
         if (state.message && state.type) {
             toast[state.type](state.message);
-            formRef.current?.closest("dialog")?.close();
+            if (state.type == "success") formRef.current?.closest("dialog")?.close();
         }
 
     }, [state]);
 
     return (
         <form ref={formRef} action={formAction} className={className}>
-
             {showMessage && <Alert type={state?.type}> {state?.message} </Alert>}
+
+            <input type="hidden" name="id" defaultValue={data?.id} />
 
             {
                 fields.map((field) => {

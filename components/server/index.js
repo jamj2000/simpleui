@@ -16,6 +16,7 @@ export { Tooltip } from './Tooltip'
 export { Popover } from './Popover'
 export { Dropdown } from './Dropdown'
 export { Dropdown2 } from './Dropdown2'
+export { Pagination } from './Pagination'
 export { CircleIcon } from './Icons'
 export { SquareIcon } from './Icons'
 export { HeartIcon } from './Icons'
@@ -25,6 +26,7 @@ export { CrossIcon } from './Icons'
 export { CreateIcon } from './Icons'
 export { UpdateIcon } from './Icons'
 export { DeleteIcon } from './Icons'
+
 
 
 
