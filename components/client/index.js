@@ -1,3 +1,4 @@
+'use client'
 export { Form } from './Form'
 export { FormRaw } from './FormRaw'
 export { MenuLink } from './MenuLink'

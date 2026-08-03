@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 
 
@@ -12,8 +13,8 @@ export function Table({
     columns = [],
     sort = "nombre",
     direction = "asc",
-    className = "",
-    // actions,
+    width = 300,
+    actions,
     children,
     renderRow
 }) {
@@ -60,36 +61,49 @@ export function Table({
     if (!data) return <p>Cargando datos...</p>;
 
     return (
-        <table className={`min-w-200 w-full ${className}`}>
-            <thead>
-                <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200">
-                    <th></th>
-                    {columns.map(({ name, label }) => (
-                        <th key={name} onClick={() => ordenar(name)} className={`${classTD} cursor-pointer`}>
-                            {label}
-                            {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
-                        </th>
-                    ))}
-                </tr>
-            </thead>
-            <tbody>
-                {orderedData.map(
-                    // renderRow
-                    (row, i) => (
-                        <tr key={row.id} className="odd:bg-slate-100 dark:odd:bg-slate-700 h-12">
+        <div className="my-4 container mx-auto w-fit overflow-hidden overflow-x-auto shadow-lg">
+            {children}
+            <table style={{ width: width * 4 }} className="border border-slate-300">
+                <thead>
+                    <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200 ">
+                        <th></th>
+                        {columns.map(({ name, label }) => (
+                            <th key={name} onClick={() => ordenar(name)} className={`${classTD} cursor-pointer`}>
+                                {label}
+                                {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
+                            </th>
+                        ))}
+                        {actions && <th className="w-30">Acciones</th>}
+                    </tr>
 
-                            <td className={`${classTD} text-slate-400 text-right pr-4`}>{i + 1}</td>
+                </thead>
+                <tbody>
+                    {orderedData.map(
+                        (row, i) => (
+                            <tr key={row.id} className="odd:bg-slate-100 dark:odd:bg-slate-700 h-12">
 
-                            {columns.map(({ name: colName }) => (
-                                <td key={row.id + colName + row[colName]} className={`${classTD}`}>
-                                    {row[colName]}
-                                </td>
-                            ))}
-                        </tr>
-                    )
-                )}
-            </tbody>
-        </table>
+                                <td className={`${classTD} text-slate-400 text-right pr-4`}>{i + 1}</td>
+
+                                {columns.map(({ name: colName }) => (
+                                    <td key={row.id + colName + row[colName]} className={`${classTD}`}>
+                                        {row[colName]}
+                                    </td>
+                                ))}
+                                {actions &&
+                                    <td>
+                                        {actions.map((Action, index) => (
+                                            <Action
+                                                key={index}
+                                                data={row}
+                                            />
+                                        ))}
+                                    </td>}
+                            </tr>
+                        )
+                    )}
+                </tbody>
+            </table>
+        </div>
     );
 }
 

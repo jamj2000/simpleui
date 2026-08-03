@@ -29,17 +29,17 @@ const extraStyle = "rounded-full border border-slate-400 bg-radial-[at_25%_25%] 
 const colors = {
     current: "from-gray-50 to-gray-200 text-gray-700 dark:from-gray-500 dark:to-gray-800 dark:text-gray-100",
     white: "from-gray-50 to-gray-200 dark:text-gray-700",
-    black: "from-gray-500 to-gray-800 text-gray-100",
-    slate: "from-slate-500 to-slate-800",
-    blue: " from-blue-500 to-blue-800",
-    green: "from-green-500 to-green-800",
-    red: "from-red-500 to-red-800",
-    yellow: "from-yellow-500 to-yellow-800",
-    orange: "from-orange-500 to-orange-800",
-    amber: "from-amber-500 to-amber-800",
-    purple: "from-purple-500 to-purple-800",
-    indigo: "from-indigo-500 to-indigo-800",
-    pink: "from-pink-500 to-pink-800",
+    black: "from-gray-400 to-gray-700 text-gray-100",
+    slate: "from-slate-400 to-slate-700",
+    blue: " from-blue-400 to-blue-700",
+    green: "from-green-400 to-green-700",
+    red: "from-red-400 to-red-700",
+    yellow: "from-yellow-400 to-yellow-700",
+    orange: "from-orange-400 to-orange-700",
+    amber: "from-amber-400 to-amber-700",
+    purple: "from-purple-400 to-purple-700",
+    indigo: "from-indigo-400 to-indigo-700",
+    pink: "from-pink-400 to-pink-700",
 };
 
 
