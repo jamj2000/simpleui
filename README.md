@@ -1,4 +1,4 @@
-# Simple UI <!-- omit in toc -->
+# Simple UI`.dev` <!-- omit in toc -->
 
 Biblioteca de componentes de UI para Next.js
 
