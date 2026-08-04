@@ -57,15 +57,6 @@ const fields = [
             ["Deporte", "deporte", false]
         ]
     },
-    {
-        name: "tipo",
-        label: "Tipo",
-        component: "InputSelect",
-        options: [
-            ["Natural", "natural"],
-            ["Jurídico", "juridico"],
-        ]
-    },
 ];
 
 
@@ -84,7 +75,6 @@ export const Form = ({
     const formRef = useRef(null);
     const handledStateRef = useRef(state);
 
-    console.log("data form", data)
 
     useEffect(() => {
         if (!state) return;
@@ -94,7 +84,8 @@ export const Form = ({
 
         if (state.message && state.type) {
             toast[state.type](state.message);
-            if (state.type == "success") formRef.current?.closest("dialog")?.close();
+            if (state.type == "success" || state.type == "info")
+                formRef.current?.closest("dialog")?.close();
         }
 
     }, [state]);

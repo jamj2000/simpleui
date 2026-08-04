@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-
 
 
 const classTD = "px-2"
@@ -13,10 +11,10 @@ export function Table({
     columns = [],
     sort = "nombre",
     direction = "asc",
-    width = 300,
+    width = 320,
     actions,
     children,
-    renderRow
+
 }) {
     const [orden, setOrden] = useState({
         columna: sort,
@@ -61,9 +59,13 @@ export function Table({
     if (!data) return <p>Cargando datos...</p>;
 
     return (
-        <div className="my-4 container mx-auto w-fit overflow-hidden overflow-x-auto shadow-lg">
-            {children}
-            <table style={{ width: width * 4 }} className="border border-slate-300">
+        <div className="container mx-auto my-4 overflow-hidden overflow-x-auto">
+
+            <div style={{ width: width * 4 }} className="mx-auto" >
+                {children}
+            </div>
+
+            <table style={{ width: width * 4 }} className="mx-auto border border-slate-300">
                 <thead>
                     <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200 ">
                         <th></th>
@@ -91,12 +93,14 @@ export function Table({
                                 ))}
                                 {actions &&
                                     <td>
-                                        {actions.map((Action, index) => (
-                                            <Action
-                                                key={index}
-                                                data={row}
-                                            />
-                                        ))}
+                                        <div className="flex gap-1">
+                                            {actions.map((Action, index) => (
+                                                <Action
+                                                    key={index}
+                                                    data={row}
+                                                />
+                                            ))}
+                                        </div>
                                     </td>}
                             </tr>
                         )

@@ -59,7 +59,7 @@ export function Pagination({ pages, page, limit }) {
                 )}
 
 
-            <div className="max-w-80 flex items-center overflow-hidden overflow-x-auto scrollbar-thin scrollbar-thumb-slate-100 dark:scrollbar-thumb-slate-700 hover:scrollbar-thumb-slate-500">
+            <div className="max-w-60 flex items-center overflow-hidden overflow-x-auto scrollbar-thin scrollbar-thumb-slate-100 dark:scrollbar-thumb-slate-700 hover:scrollbar-thumb-slate-500">
                 {Array.from({ length: pages }, (_, i) => i + 1).map((numPage) => (
                     <PageNumber key={numPage} numPage={numPage} limit={limit} selected={numPage == page} />
                 ))}
