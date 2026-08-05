@@ -35,6 +35,8 @@ Biblioteca de componentes de UI para Next.js
 
 
 
+### [Documentación →](https://simpleui.dev) <!-- omit in toc -->
+
 
 
 # 1. Motivación
@@ -89,10 +91,15 @@ A continuación se muestran los **componentes disponibles, organizados de manera
 
 **Propiedades:**
 
-| Nombre | Valores                       | Por defecto |
-| ------ | ----------------------------- | ----------- |
-| `type` | info, success, warning, error | info        |
 
+`type` Por defecto: `info`
+
+- `info`
+- `success`
+- `warning`
+- `error`
+
+`small` 
 
 ```jsx
 <Alert type="info"> 
