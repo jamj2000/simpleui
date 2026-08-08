@@ -210,8 +210,14 @@ export async function getAvailableComponents() {
 }
 
 
-export async function addVersionFile(targetDir) {
-  const versionPath = path.join(targetDir, "VERSION");
+export async function addVersionFile() {
+  const targetDir = await findTargetDirectory();
+  const destination = path.join(
+    targetDir,
+    "simpleui"
+  )
+
+  const versionPath = path.join(destination, "VERSION");
 
   await fs.writeFile(versionPath, `${packageJson.version}\n`, "utf8");
 }
