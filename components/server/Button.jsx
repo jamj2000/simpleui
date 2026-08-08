@@ -31,17 +31,16 @@ const colors = {
     white: "from-gray-50 to-gray-200 dark:text-gray-700",
     black: "from-gray-400 to-gray-700 text-gray-100",
     slate: "from-slate-400 to-slate-700",
-    blue: " from-blue-400 to-blue-700",
-    green: "from-green-400 to-green-700",
     red: "from-red-400 to-red-700",
+    green: "from-green-400 to-green-700",
+    blue: " from-blue-400 to-blue-700",
     yellow: "from-yellow-400 to-yellow-700",
-    orange: "from-orange-400 to-orange-700",
     amber: "from-amber-400 to-amber-700",
+    orange: "from-orange-400 to-orange-700",
+    pink: "from-pink-400 to-pink-700",
     purple: "from-purple-400 to-purple-700",
     indigo: "from-indigo-400 to-indigo-700",
-    pink: "from-pink-400 to-pink-700",
 };
-
 
 
 const sizes = {
@@ -55,9 +54,24 @@ const sizes = {
 };
 
 
+const rounds = {
+    none: "rounded-none",
+    xs: "rounded-xs",
+    sm: "rounded-xs",
+    md: "rounded-xs",
+    lg: "rounded-xs",
+    xl: "rounded-xs",
+    "2xl": "rounded-xs",
+    "3xl": "rounded-xs",
+    "full": "rounded-full"
+};
+
+
+
 export function Button({
     color = "current",
     size = "lg",
+    round = "full",
     onClick,
     disabled = false,
     children,
@@ -68,7 +82,7 @@ export function Button({
             type="button"
             onClick={onClick}
             disabled={disabled}
-            className={`${baseStyle} ${extraStyle} ${sizes[size]} ${colors[color]} ${className}`}
+            className={`${baseStyle} ${extraStyle} ${sizes[size]} ${colors[color]} ${rounds[round]} ${className}`}
         >
             {children}
         </button>

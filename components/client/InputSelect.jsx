@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 const classInput = `disabled:text-zinc-400 placeholder-zinc-400
@@ -9,11 +9,11 @@ const classInput = `disabled:text-zinc-400 placeholder-zinc-400
                     focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all`
 const classLabel = `absolute left-3.75 top-0 -translate-y-1/2
                     text-current bg-zinc-50 dark:bg-zinc-800 
-                     text-sm md:text-lg shadow-xs shadow-current/30 pointer-events-none 
+                    text-sm @md:text-lg shadow-xs shadow-current/30 pointer-events-none 
                     px-2 rounded-full
                     `
 
-const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1).toLowerCase()
+// const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1).toLowerCase()
 
 
 
@@ -28,10 +28,21 @@ export const InputSelect = ({ label = "", name, options, disabled, multiple, cla
 
     const [selected, setSelected] = useState(getSelected);
     const [open, setOpen] = useState(false);
+    const containerRef = useRef(null);
 
     useEffect(() => {
         setSelected(getSelected());
     }, [options, multiple])
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (containerRef.current && !containerRef.current.contains(e.target)) {
+                setOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
 
 
@@ -47,7 +58,7 @@ export const InputSelect = ({ label = "", name, options, disabled, multiple, cla
                 disabled={disabled}
                 className={`peer ${classInput}`}
             />
-            <span className={`peer-disabled:text-zinc-400 ${classLabel}`}>{multiple ? "Seleccione opciones" : labelSelect}</span>
+            <span className={`peer-disabled:text-zinc-400 ${classLabel}`}>{labelSelect}</span>
         </>
 
     )
@@ -93,7 +104,7 @@ export const InputSelect = ({ label = "", name, options, disabled, multiple, cla
 
 
     return (
-        <div className={`group relative ${className}`}>
+        <div ref={containerRef} className={`group relative ${className}`}>
 
             <div tabIndex={0} role="button"
                 onClick={() => setOpen(o => !o)}
@@ -111,7 +122,7 @@ export const InputSelect = ({ label = "", name, options, disabled, multiple, cla
                 />
             </div>
 
-            <div className={`z-10 absolute top-full left-0 mt-1 w-full ${open ? "block" : "hidden"} focus-within:block group-focus-within:block rounded-lg bg-white dark:bg-zinc-800 border border-slate-200 dark:border-slate-700 p-4 shadow-xl`}>
+            <div className={`z-10 absolute top-full left-0 mt-1 w-full ${open ? "block" : "hidden"} rounded-lg bg-white dark:bg-zinc-800 border border-slate-200 dark:border-slate-700 p-4 shadow-xl`}>
                 {options.map(([label, value, _]) => <Input key={value} label={label} value={value} />)}
             </div>
         </div>

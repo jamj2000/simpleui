@@ -28,9 +28,9 @@ const initColumns = {
 
 
 
-export function DragAndDrop({ cols = initColumns }) {
+export function DragAndDrop({ columns = initColumns }) {
 
-    const [columnas, setColumnas] = useState(cols)
+    const [columnas, setColumnas] = useState(columns)
 
 
     const handleDragStart = (e, id, origen) => {

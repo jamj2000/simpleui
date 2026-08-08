@@ -19,7 +19,7 @@ const classInput = `peer disabled:text-zinc-400 placeholder-zinc-400
 
 const classLabel = `absolute left-3.75 top-0 -translate-y-1/2
                     text-current bg-zinc-50 dark:bg-zinc-800 
-                     text-sm md:text-lg shadow-xs shadow-current/30 pointer-events-none 
+                    text-sm @md:text-lg shadow-xs shadow-current/30 pointer-events-none 
                     px-2 rounded-full peer-disabled:text-zinc-400 `
 
 

@@ -3,19 +3,21 @@
 import { useEffect, useState } from "react";
 
 
+
 const classTD = "px-2"
 
 
 export function Table({
     data = [],
     columns = [],
-    sort = "nombre",
+    sort,
     direction = "asc",
-    width = 320,
+    width = 1200,
     actions,
     children,
 
 }) {
+
     const [orden, setOrden] = useState({
         columna: sort,
         direccion: direction,
@@ -25,47 +27,60 @@ export function Table({
         setOrden({
             columna: sort,
             direccion: direction,
-        })
-    }, [sort, direction])
+        });
+    }, [sort, direction]);
 
-    // Protección si la data aún no llega
     const originalData = data ?? [];
 
-    // Ordenamiento seguro (React Compiler se encarga de memorizarlo)
     const orderedData = [...originalData].sort((a, b) => {
+        if (!orden.columna) return 0;
+
         const valorA = a[orden.columna] ?? "";
         const valorB = b[orden.columna] ?? "";
 
         let resultado = 0;
-        if (typeof valorA === "string" && typeof valorB === "string") {
-            resultado = valorA.localeCompare(valorB, undefined, { sensitivity: "base" });
+
+        if (
+            typeof valorA === "string" &&
+            typeof valorB === "string"
+        ) {
+            resultado = valorA.localeCompare(
+                valorB,
+                undefined,
+                { sensitivity: "base" }
+            );
         } else {
-            resultado = valorA > valorB ? 1 : valorA < valorB ? -1 : 0;
+            resultado =
+                valorA > valorB ? 1 :
+                    valorA < valorB ? -1 :
+                        0;
         }
 
-        return orden.direccion === "asc" ? resultado : -resultado;
+        return orden.direccion === "asc"
+            ? resultado
+            : -resultado;
     });
 
     function ordenar(columna) {
         setOrden(actual => ({
             columna,
             direccion:
-                actual.columna === columna && actual.direccion === "asc"
+                actual.columna === columna &&
+                    actual.direccion === "asc"
                     ? "desc"
                     : "asc",
         }));
     }
 
-    if (!data) return <p>Cargando datos...</p>;
 
     return (
         <div className="container mx-auto my-4 overflow-hidden overflow-x-auto">
 
-            <div style={{ width: width * 4 }} className="mx-auto" >
+            <div style={{ width: width + 'px' }} className="mx-auto" >
                 {children}
             </div>
 
-            <table style={{ width: width * 4 }} className="mx-auto border border-slate-300">
+            <table style={{ width: width + 'px' }} className="mx-auto border border-slate-300">
                 <thead>
                     <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200 ">
                         <th></th>

@@ -2,11 +2,17 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import readlineSync from "readline-sync";
 import { fileURLToPath } from "node:url";
+import packageJson from "../package.json" with { type: "json" };
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const sourceDir = path.join(__dirname, "..", "components");
+
+
+
 
 async function findTargetDirectory() {
   const candidates = [
@@ -202,3 +208,12 @@ export async function getAvailableComponents() {
 
   return components;
 }
+
+
+export async function addVersionFile(targetDir) {
+  const versionPath = path.join(targetDir, "VERSION");
+
+  await fs.writeFile(versionPath, `${packageJson.version}\n`, "utf8");
+}
+
+

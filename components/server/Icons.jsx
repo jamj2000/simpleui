@@ -18,7 +18,7 @@ const colorsChecked = {
 
 // ICONOS PARA INPUTS RADIO Y CHECKBOX
 
-export const CircleIcon = ({ color = "text-white", colorChecked = "indigo" }) => (
+export const CircleIcon = ({ color = "text-white", colorChecked = "blue" }) => (
     <svg
         height={24}
         width={24}
@@ -138,6 +138,25 @@ export const CrossIcon = ({ color = "text-white", colorChecked = "green" }) => (
         />
     </svg>
 
+)
+
+// ICONO HOME
+
+export const HomeIcon = ({ className }) => (
+    <svg
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+        className={className}
+        fill="none"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M12.614 1.21a1 1 0 00-1.228 0l-9 7A1 1 0 002 9v11a2 2 0 002 2h16a2 2 0 002-2V9a1 1 0 00-.386-.79l-9-7zM16 20h4V9.49l-8-6.223-8 6.222V20h4v-8a1 1 0 011-1h6a1 1 0 011 1v8zm-6 0v-7h4v7h-4z"
+            fill="currentColor"
+        />
+    </svg>
 )
 
 
