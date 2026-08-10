@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
+const colorBase = "bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700"
 
 export function ThemeToggle() {
     const { theme, setTheme, resolvedTheme } = useTheme();
@@ -19,7 +20,7 @@ export function ThemeToggle() {
     return (
         <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="rounded-md p-2 cursor-pointer hover:bg-muted transition"
+            className={`rounded-full p-2 cursor-pointer hover:outline hover:outline-slate-600 transition ${colorBase}`}
             aria-label="Cambiar tema"
         >
             {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}

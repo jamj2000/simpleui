@@ -7,8 +7,13 @@ const colorBase = "bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:bord
 const menuClasses = `${colorBase} z-20 not-md:mt-2 not-md:py-5 not-md:items-center px-8 py-1 flex flex-col gap-2 md:flex-row absolute md:relative right-0 top-full md:top-0 w-fit rounded-lg md:border-none md:shadow-none shadow-lg`
 
 
+const positions = {
+    "right": "right-0",
+    "left": "left-0",
+}
 
-export function MainMenu({ children }) {
+
+export function MainMenu({ position = "right", children }) {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef(null);
 
@@ -32,11 +37,11 @@ export function MainMenu({ children }) {
     }, [isOpen]);
 
     return (
-        <div ref={menuRef} className="relative">
+        <div ref={menuRef} className="relative inline-block">
             <button
                 type="button"
                 onClick={() => setIsOpen((open) => !open)}
-                className={`${colorBase} ml-auto block p-2 text-2xl md:hidden rounded-full hover:outline hover:outline-slate-600`}
+                className={`${colorBase} block p-2 text-2xl md:hidden rounded-full hover:outline hover:outline-slate-600`}
                 aria-expanded={isOpen}
                 aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
             >
@@ -44,7 +49,7 @@ export function MainMenu({ children }) {
             </button>
 
             {/* Menú */}
-            <div className={`${isOpen ? 'flex' : 'hidden'} ${menuClasses} flex-col md:flex md:flex-row md:items-center md:justify-end`} >
+            <div className={`${isOpen ? 'flex' : 'hidden'} ${menuClasses} ${positions[position]} flex-col md:flex md:flex-row md:items-center md:justify-end`} >
                 {children}
             </div>
         </div>
