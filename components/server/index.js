@@ -1,7 +1,5 @@
 export { Alert } from './Alert'
 export { Badge } from './Badge'
-export { Card } from './Card'
-export { Card2 } from './Card2'
 export { Button } from './Button'
 export { Submit } from './Submit'
 export { Space } from './Space'
@@ -30,7 +28,7 @@ export { CreateIcon } from './Icons'
 export { UpdateIcon } from './Icons'
 export { DeleteIcon } from './Icons'
 export { ViewIcon } from './Icons'
-export { Footer } from './Footer'
+
 
 
 

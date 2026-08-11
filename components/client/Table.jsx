@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import { useRouter } from 'next/navigation'
 
 
 const classTD = "px-2"
@@ -14,9 +15,12 @@ export function Table({
     direction = "asc",
     width = 1200,
     actions,
+    prefix,
     children,
 
 }) {
+
+    const router = useRouter()
 
     const [orden, setOrden] = useState({
         columna: sort,
@@ -97,9 +101,15 @@ export function Table({
                 <tbody>
                     {orderedData.map(
                         (row, i) => (
-                            <tr key={row.id} className="odd:bg-slate-100 dark:odd:bg-slate-700 h-12">
+                            <tr
+                                key={row.id}
+                                onClick={() => prefix ? router.push(prefix + '/' + row.id) : {}}
+                                className={`h-12 odd:bg-slate-100 dark:odd:bg-slate-700 ${prefix ? "hover:cursor-pointer" : ""}`}
+                            >
 
-                                <td className={`${classTD} text-slate-400 text-right pr-4`}>{i + 1}</td>
+                                <td className={`${classTD} text-slate-400 text-right pr-4`}>
+                                    {i + 1}
+                                </td>
 
                                 {columns.map(({ name: colName }) => (
                                     <td key={row.id + colName + row[colName]} className={`${classTD}`}>
@@ -108,7 +118,7 @@ export function Table({
                                 ))}
                                 {actions &&
                                     <td>
-                                        <div className="flex gap-1">
+                                        <div className="flex gap-1" onClick={e => e.stopPropagation()} >
                                             {actions.map((Action, index) => (
                                                 <Action
                                                     key={index}
@@ -122,7 +132,7 @@ export function Table({
                     )}
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 }
 

@@ -21,7 +21,7 @@ const classTip = `absolute left-3.75 top-1/2 -translate-y-1/2
 export const InputImage = ({
     label = "Imagen",
     name = "image",
-    src = defaultImage,
+    value = defaultImage,
     width = 320,
     height = 200,
     disabled,
@@ -31,7 +31,7 @@ export const InputImage = ({
         <img
             id={name}
             name={name}
-            src={src}
+            src={value}
             style={{ width: width, height: height }}
             className="object-cover object-center"
             onDrop={disabled ? () => { } : dropHandler}
