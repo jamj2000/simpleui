@@ -120,7 +120,7 @@ export const Form = ({
                         <ComponenteUI
                             label={input.label}
                             name={input.name}
-                            defaultValue={valorDefault}
+                            value={valorDefault}
                             disabled={disabled || input.disabled}
                             {...input} // Pasa cualquier otro campo
                         />

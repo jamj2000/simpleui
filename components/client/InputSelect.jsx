@@ -21,10 +21,17 @@ export const InputSelect = ({ label = "", name, options, disabled, multiple, cla
 
     const labelSelect = label
 
+    // const getSelected = () =>
+    //     multiple
+    //         ? options.filter(([_label, value, checked]) => checked).map(([_label, value, _checked]) => value)
+    //         : options.findLast(([_label, value, checked]) => checked)?.[1] ?? options[0][1]
+
     const getSelected = () =>
         multiple
-            ? options.filter(([_label, value, checked]) => checked).map(([_label, value, _checked]) => value)
-            : options.findLast(([_label, value, checked]) => checked)?.[1] ?? options[0][1]
+            ? options
+                .filter(([_label, value, checked]) => checked)
+                .map(([_label, value]) => value)
+            : options.findLast(([_label, value, checked]) => checked)?.[1] ?? null;
 
     const [selected, setSelected] = useState(getSelected);
     const [open, setOpen] = useState(false);

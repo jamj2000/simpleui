@@ -16,7 +16,7 @@ const classTip = `absolute left-3.75 top-1/2 -translate-y-1/2
                     hidden group-hover:block
                     `
 
-
+const MAX_SIZE = 1024 * 1024
 
 export const InputImage = ({
     label = "Imagen",
@@ -36,7 +36,7 @@ export const InputImage = ({
             className="object-cover object-center"
             onDrop={disabled ? () => { } : dropHandler}
             onDragOver={disabled ? () => { } : dragOverHandler}
-            onDoubleClick={disabled ? () => { } : dblclickHandler}
+            onClick={disabled ? () => { } : dblclickHandler}
             title={label}
             alt="image"
         />
@@ -51,7 +51,7 @@ export const InputImage = ({
             {disabled ?? label}
         </label>
         <label htmlFor={name} className={classTip}>
-            {"Haz doble click o arrastra y suelta aquí"}
+            {"Haz click o arrastra y suelta aquí"}
         </label>
     </div>
 )
@@ -93,6 +93,11 @@ function changeHandler(ev) {
     if (fileInput.files && fileInput.files[0]) {
         var reader = new FileReader();
         reader.readAsDataURL(fileInput.files[0]);
+        if (fileInput.files[0].size > MAX_SIZE) {
+            alert("El archivo ocupa demasiado espacio.\nTamaño límite: " + MAX_SIZE + " bytes.")
+            fileInput.value = ""
+            return
+        }
         reader.onload = (e) => imgPreview.setAttribute("src", e.target.result);
     }
 }
