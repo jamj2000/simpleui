@@ -53,14 +53,13 @@ La documentación está accesible en [SimpleUI.dev](https://simpleui.dev).
 
 ## 4.1. Descarga los componentes
 
-> **Nota:**
->
-> Todos los componentes se guardarán en la carpeta `src/components/simpleui` o `components/simpleui` según tengas configurado tu proyecto.
-
-
 ```bash
 npx  simpleui.dev  init
 ```
+
+> **Nota:**
+>
+> Todos los componentes se guardarán en la carpeta `src/components/simpleui` o `components/simpleui` según tengas configurado tu proyecto.
 
 
 ## 4.2. Importa los componentes
@@ -116,6 +115,8 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 - Table
 - List
 - Card
+- List2
+- Card2
 - DragAndDrop
 - Pagination
 - ThemeToggle
