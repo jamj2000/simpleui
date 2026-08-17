@@ -27,7 +27,7 @@ export const InputImage = ({
     disabled,
     className = ""
 }) => (
-    <div className={`group relative my-4 inline-block ${className}`}>
+    <div className={`group relative text-zinc-800 dark:text-zinc-100 my-4 inline-block ${className}`}>
         <img
             id={name}
             name={name}

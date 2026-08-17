@@ -44,7 +44,7 @@ export const InputRange = ({
     return (
         <div className="flex gap-2 items-center">
 
-            <div className="relative flex-1">
+            <div className="relative flex-1 text-zinc-800 dark:text-zinc-100">
                 <label className="absolute -top-2 left-0 text-sm @md:text-lg">{min}</label>
                 <label className="absolute -top-2 right-0 text-sm @md:text-lg">{max}</label>
                 <input

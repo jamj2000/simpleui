@@ -28,7 +28,7 @@ const classLabel = `absolute left-3.75 top-1/2 -translate-y-1/2
 
 
 export const InputNumber = ({ label, name, value, ...props }) => (
-    <div className="relative my-2">
+    <div className="relative text-zinc-800 dark:text-zinc-100">
         <input
             type="number"
             id={name}

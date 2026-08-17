@@ -31,7 +31,30 @@ export const Modal = ({ children, trigger, className = "" }) => {
             <dialog
                 ref={dialogRef}
                 onClick={handleDialogClick}
-                className="w-[clamp(500px,50%,1000px)] m-auto p-0 backdrop:bg-black/50 overflow-hidden rounded-lg outline-none shadow-md shadow-neutral-400/50"
+                // className="w-[clamp(500px,50%,1000px)] m-auto p-0 backdrop:bg-black/50 overflow-hidden rounded-lg outline-none shadow-md shadow-neutral-400/50"
+                className="
+                    m-auto w-[clamp(500px,50%,1000px)]
+                    overflow-hidden rounded-lg p-0
+                    outline-none
+                    shadow-md shadow-neutral-400/50
+
+                    opacity-0 scale-95
+                    transition-[opacity,transform,display,overlay]
+                    duration-500
+                    ease-out
+
+                    open:opacity-100
+                    open:scale-100
+
+                    starting:open:opacity-0
+                    starting:open:scale-95
+
+                    backdrop:bg-black/0
+                    open:backdrop:bg-black/50
+                    backdrop:transition-[background-color,display,overlay]
+                    backdrop:duration-500
+                "
+
             >
                 {/* Contenedor interno relativo para evitar que el scroll o los clics internos afecten al backdrop */}
                 <div className="relative p-6 max-h-[85vh] overflow-y-auto">
