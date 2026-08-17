@@ -2,6 +2,7 @@
 export { Form } from './Form'
 export { FormRaw } from './FormRaw'
 export { MenuLink } from './MenuLink'
+export { BackLink } from './BackLink'
 export { Modal } from './Modal'
 export { Table } from './Table'
 export { List } from './List'

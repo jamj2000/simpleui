@@ -160,6 +160,47 @@ export const HomeIcon = ({ className }) => (
 )
 
 
+// ICONO LEFT ARROW
+
+export const LeftArrowIcon = ({ className }) => (
+    <svg
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+        fill="none"
+        className={className}
+    >
+        <path
+            d="M11 9l-3 3m0 0l3 3m-3-3h8m5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+)
+
+// ICONO RIGHT ARROW
+
+export const RightArrowIcon = ({ className }) => (
+    <svg
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+        fill="none"
+        className={className}
+    >
+        <path
+            d="M13 15l3-3m0 0l-3-3m3 3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+)
+
+
 // ICONOS PARA ACCIONES
 
 export const CreateIcon = ({ className }) => (

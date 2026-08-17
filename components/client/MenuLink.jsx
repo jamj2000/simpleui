@@ -11,7 +11,7 @@ export function MenuLink({
     classCheck = "bg-slate-600 text-white",
     classHover = "hover:underline hover:underline-offset-8 hover:bg-slate-200 dark:hover:bg-slate-500 hover:text-current",
     classActive = "active:decoration-2 active:decoration-blue-400",
-    className = "px-4 py-2 rounded-md"
+    className = "px-4 py-2 rounded-md dark:text-white"
 }) {
     const pathname = usePathname()
 
