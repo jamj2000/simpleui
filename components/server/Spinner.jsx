@@ -61,7 +61,7 @@ const spinners = [
 
 
 export const Spinner = ({ type = 0, size = 10, color = "text-black dark:text-white" }) => (
-    <div className={`${color} inline-grid animate-spin`}>
+    <div className={`${color} w-fit inline-grid animate-spin`}>
         {spinners[type]?.({ size, color })}
     </div>
 )
