@@ -113,7 +113,10 @@ export function Table({
 
                                 {columns.map(({ name: colName }) => (
                                     <td key={row.id + colName + row[colName]} className={`${classTD}`}>
-                                        {row[colName]}
+                                        {typeof row[colName] != 'boolean'
+                                            ? row[colName]
+                                            : row[colName] ? "✅" : "⬜"
+                                        }
                                     </td>
                                 ))}
                                 {actions &&
