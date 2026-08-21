@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 import { useRouter } from 'next/navigation'
 
 
@@ -27,12 +27,12 @@ export function Table({
         direccion: direction,
     });
 
-    useEffect(() => {
-        setOrden({
-            columna: sort,
-            direccion: direction,
-        });
-    }, [sort, direction]);
+    // useEffect(() => {
+    //     setOrden({
+    //         columna: sort,
+    //         direccion: direction,
+    //     });
+    // }, [sort, direction]);
 
     const originalData = data ?? [];
 
@@ -84,17 +84,17 @@ export function Table({
                 {children}
             </div>
 
-            <table style={{ width: width + 'px' }} className="mx-auto border border-slate-300">
+            <table style={{ width: width + 'px' }} className="table-fixed mx-auto border border-slate-300">
                 <thead>
                     <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200 ">
-                        <th></th>
+                        <th className="w-16"></th>
                         {columns.map(({ name, label }) => (
                             <th key={name} onClick={() => ordenar(name)} className={`${classTD} cursor-pointer`}>
                                 {label}
                                 {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
                             </th>
                         ))}
-                        {actions && <th className="w-30">Acciones</th>}
+                        {actions && <th className="w-40 pr-4 text-right">Acciones</th>}
                     </tr>
 
                 </thead>
@@ -118,7 +118,7 @@ export function Table({
                                 ))}
                                 {actions &&
                                     <td>
-                                        <div className="flex gap-1" onClick={e => e.stopPropagation()} >
+                                        <div className="flex justify-end gap-1 mx-2" onClick={e => e.stopPropagation()} >
                                             {actions.map((Action, index) => (
                                                 <Action
                                                     key={index}

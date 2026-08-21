@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 
@@ -24,12 +24,12 @@ export function List({
         direccion: direction,
     });
 
-    useEffect(() => {
-        setOrden({
-            columna: sort,
-            direccion: direction,
-        })
-    }, [sort, direction])
+    // useEffect(() => {
+    //     setOrden({
+    //         columna: sort,
+    //         direccion: direction,
+    //     })
+    // }, [sort, direction])
 
 
     // Protección si la data aún no llega

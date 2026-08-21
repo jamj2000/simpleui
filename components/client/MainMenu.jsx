@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 
 const colorBase = "bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700"
-const menuClasses = `${colorBase} z-20 mt-2 md:mt-0 px-6 md:px-6 py-4 md:py-2 flex flex-col gap-1 absolute md:relative top-full md:top-0 w-max md:w-fit md:flex md:flex-row md:items-center md:justify-end rounded-lg md:border-none md:shadow-none shadow-lg`;
+const menuClasses = `${colorBase} z-20 not-md:mt-2 not-md:py-5 not-md:items-center px-8 py-1 flex flex-col gap-2 md:flex-row absolute md:relative right-0 top-full md:top-0 w-fit rounded-lg md:border-none md:shadow-none shadow-lg`
 
 
 const positions = {
@@ -28,11 +28,11 @@ export function MainMenu({ position = "right", children }) {
                 setIsOpen(false);
             }
         };
-        //   document.addEventListener('mousedown', handleClickOutside);
-        document.addEventListener('mouseup', () => setIsOpen(false));
+
+        document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
-            document.removeEventListener('mouseup', () => setIsOpen(false));
+            document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen]);
 
@@ -49,9 +49,7 @@ export function MainMenu({ position = "right", children }) {
             </button>
 
             {/* Menú */}
-            <div
-                className={`${isOpen ? 'flex' : 'hidden'} ${menuClasses} ${positions[position]}`}
-            >
+            <div className={`${isOpen ? 'flex' : 'hidden'} ${menuClasses} ${positions[position]} flex-col md:flex md:flex-row md:items-center md:justify-end`} >
                 {children}
             </div>
         </div>
@@ -60,13 +58,13 @@ export function MainMenu({ position = "right", children }) {
 
 const HamburgerIcon = () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />    // ≡
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
 )
 
 const CloseIcon = () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />       // ×
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
 )
 
