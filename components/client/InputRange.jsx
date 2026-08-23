@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 
@@ -35,11 +35,13 @@ export const InputRange = ({
 }) => {
 
     const [val, setVal] = useState(value ?? min ?? 0);
+    const [prevValue, setPrevValue] = useState(value);
     const percent = ((val - min) / (max - min)) * 100;
 
-    // useEffect(() => {
-    //     setVal(value ?? min ?? 0);
-    // }, [value, min]);
+    if (prevValue !== value) {
+        setPrevValue(value);
+        setVal(value ?? min ?? 0);
+    }
 
     return (
         <div className="flex gap-2 items-center">
