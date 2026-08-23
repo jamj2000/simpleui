@@ -12,7 +12,9 @@ export function Switch({
 
     const [optimisticValue, setOptimisticValue] = useOptimistic(value)
 
-    function handleClick() {
+    function handleClick(e) {
+        e.stopPropagation()
+
         const newValue = !optimisticValue
 
         startTransition(async () => {

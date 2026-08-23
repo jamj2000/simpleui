@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 
 
 const colorBase = "bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700"
@@ -50,7 +50,9 @@ export function MainMenu({ position = "right", children }) {
 
             {/* Menú */}
             <div className={`${isOpen ? 'flex' : 'hidden'} ${menuClasses} ${positions[position]} flex-col md:flex md:flex-row md:items-center md:justify-end`} >
-                {children}
+                <Suspense fallback=".">
+                    {children}
+                </Suspense>
             </div>
         </div>
     );

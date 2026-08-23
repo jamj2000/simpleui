@@ -84,7 +84,7 @@ export function Table({
                 {children}
             </div>
 
-            <table style={{ width: width + 'px' }} className="table-fixed mx-auto border border-slate-300">
+            <table style={{ width: width + 'px' }} className="table-auto mx-auto border border-slate-300">
                 <thead>
                     <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200 ">
                         <th className="w-16"></th>
