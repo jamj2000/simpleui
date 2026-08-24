@@ -1,7 +1,7 @@
 "use client";
 
 
-const defaultImage = "data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KDTwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIFRyYW5zZm9ybWVkIGJ5OiBTVkcgUmVwbyBNaXhlciBUb29scyAtLT4KPHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgoNPGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiLz4KDTxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgoNPGcgaWQ9IlNWR1JlcG9faWNvbkNhcnJpZXIiPiA8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI0VGRjFGMyIvPiA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTMzLjI1MDMgMzguNDgxNkMzMy4yNjAzIDM3LjA0NzIgMzQuNDE5OSAzNS44ODY0IDM1Ljg1NDMgMzUuODc1SDgzLjE0NjNDODQuNTg0OCAzNS44NzUgODUuNzUwMyAzNy4wNDMxIDg1Ljc1MDMgMzguNDgxNlY4MC41MTg0Qzg1Ljc0MDMgODEuOTUyOCA4NC41ODA3IDgzLjExMzYgODMuMTQ2MyA4My4xMjVIMzUuODU0M0MzNC40MTU4IDgzLjEyMzYgMzMuMjUwMyA4MS45NTcgMzMuMjUwMyA4MC41MTg0VjM4LjQ4MTZaTTgwLjUwMDYgNDEuMTI1MUgzOC41MDA2Vjc3Ljg3NTFMNjIuODkyMSA1My40NzgzQzYzLjkxNzIgNTIuNDUzNiA2NS41Nzg4IDUyLjQ1MzYgNjYuNjAzOSA1My40NzgzTDgwLjUwMDYgNjcuNDAxM1Y0MS4xMjUxWk00My43NSA1MS42MjQ5QzQzLjc1IDU0LjUyNDQgNDYuMTAwNSA1Ni44NzQ5IDQ5IDU2Ljg3NDlDNTEuODk5NSA1Ni44NzQ5IDU0LjI1IDU0LjUyNDQgNTQuMjUgNTEuNjI0OUM1NC4yNSA0OC43MjU0IDUxLjg5OTUgNDYuMzc0OSA0OSA0Ni4zNzQ5QzQ2LjEwMDUgNDYuMzc0OSA0My43NSA0OC43MjU0IDQzLjc1IDUxLjYyNDlaIiBmaWxsPSIjNjg3Nzg3Ii8+IDwvZz4KDTwvc3ZnPg=="
+const defaultImage = "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI0VGRjFGMyIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzMuMjUwMyAzOC40ODE2QzMzLjI2MDMgMzcuMDQ3MiAzNC40MTk5IDM1Ljg4NjQgMzUuODU0MyAzNS44NzVIODMuMTQ2M0M4NC41ODQ4IDM1Ljg3NSA4NS43NTAzIDM3LjA0MzEgODUuNzUwMyAzOC40ODE2VjgwLjUxODRDODUuNzQwMyA4MS45NTI4IDg0LjU4MDcgODMuMTEzNiA4My4xNDYzIDgzLjEyNUgzNS44NTQzQzM0LjQxNTggODMuMTIzNiAzMy4yNTAzIDgxLjk1NyAzMy4yNTAzIDgwLjUxODRWMzguNDgxNlpNODAuNTAwNiA0MS4xMjUxSDM4LjUwMDZWNzcuODc1MUw2Mi44OTIxIDUzLjQ3ODNDNjMuOTE3MiA1Mi40NTM2IDY1LjU3ODggNTIuNDUzNiA2Ni42MDM5IDUzLjQ3ODNMODAuNTAwNiA2Ny40MDEzVjQxLjEyNTFaTTQzLjc1IDUxLjYyNDlDNDMuNzUgNTQuNTI0NCA0Ni4xMDA1IDU2Ljg3NDkgNDkgNTYuODc0OUM1MS44OTk1IDU2Ljg3NDkgNTQuMjUgNTQuNTI0NCA1NC4yNSA1MS42MjQ5QzU0LjI1IDQ4LjcyNTQgNTEuODk5NSA0Ni4zNzQ5IDQ5IDQ2LjM3NDlDNDYuMTAwNSA0Ni4zNzQ5IDQzLjc1IDQ4LjcyNTQgNDMuNzUgNTEuNjI0OVoiIGZpbGw9IiM2ODc3ODciLz48L3N2Zz4="
 
 const classLabel = `absolute left-3.75 top-0 -translate-y-1/2
                     text-current bg-zinc-50 dark:bg-zinc-800 
@@ -21,7 +21,7 @@ const MAX_SIZE = 1024 * 1024
 export const InputImage = ({
     label = "Imagen",
     name = "image",
-    value = defaultImage,
+    value,
     width = 320,
     height = 200,
     disabled,
@@ -31,9 +31,9 @@ export const InputImage = ({
         <img
             id={name}
             name={name}
-            src={value}
+            src={value || defaultImage}
             style={{ width: width, height: height }}
-            className="object-cover object-center"
+            className="object-cover object-center rounded-xl shadow-md"
             onDrop={disabled ? () => { } : dropHandler}
             onDragOver={disabled ? () => { } : dragOverHandler}
             onClick={disabled ? () => { } : dblclickHandler}
