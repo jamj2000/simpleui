@@ -15,6 +15,7 @@ import { CircleIcon, SquareIcon } from "./Icons";
 export const InputCheck = ({ label = "", name, value, checked, disabled, icon, multiple = false }) => (
     <label className="flex items-center gap-2 w-fit">
         <input
+            key={checked}
             type={multiple ? "checkbox" : "radio"}
             name={name}
             value={value}

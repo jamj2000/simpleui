@@ -15,6 +15,7 @@ const classLabel = `absolute left-3.75 top-0 -translate-y-1/2
 export const InputArea = ({ label, name, value, disabled, ...props }) => (
     <div className="relative text-zinc-800 dark:text-zinc-100">
         <textarea
+            key={value}
             id={name}
             name={name}
             placeholder=""

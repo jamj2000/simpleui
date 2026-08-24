@@ -12,6 +12,7 @@ import { InputGroup } from "../server/InputGroup";
 import { Submit } from "../server/Submit";
 import { Badge } from "../server/Badge";
 import { Alert } from "../server/Alert";
+import { InputArea } from "../server/InputArea";
 import { InputHidden } from "../server/InputHidden";
 import { InputSelect } from "./InputSelect";
 import { InputImage } from "./InputImage";
@@ -21,6 +22,7 @@ import { InputImage } from "./InputImage";
 // Creamos el mapa que relaciona el nombre (String) con el componente (React)
 const COMPONENT_MAP = {
     InputHidden,
+    InputArea,
     InputImage,
     InputText,
     InputNumber,
@@ -66,7 +68,7 @@ export const Form = ({
     }, [state]);
 
     return (
-        <form ref={formRef} action={formAction} className={`@container flex flex-col ${className}`}>
+        <form key={JSON.stringify(data)} ref={formRef} action={formAction} className={`@container flex flex-col ${className}`}>
             {showMessage && <Alert type={state?.type}> {state?.message} </Alert>}
 
             <input type="hidden" name="id" defaultValue={data?.id} />
@@ -77,10 +79,12 @@ export const Form = ({
 
                 const valorDefault = state?.values?.[input.name] ?? data[input.name];
                 const errorCampo = state?.errors?.[input.name];
+                const inputKey = input.name + "_" + (typeof valorDefault === 'object' ? JSON.stringify(valorDefault) : valorDefault);
 
                 return (
                     <div key={input.name} className="flex flex-col gap-1 my-3">
                         <ComponenteUI
+                            key={inputKey}
                             label={input.label}
                             name={input.name}
                             value={valorDefault}

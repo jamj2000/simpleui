@@ -16,6 +16,7 @@ const classLabel = `absolute left-3.75 top-1/2 -translate-y-1/2
                     peer-disabled:text-sm            
                     @md:peer-disabled:text-lg
 
+
                     peer-placeholder-shown:top-1/2
                     peer-placeholder-shown:text-xl
                     @md:peer-placeholder-shown:text-2xl
@@ -27,8 +28,9 @@ const classLabel = `absolute left-3.75 top-1/2 -translate-y-1/2
 
 
 export const InputText = ({ label, name, value, disabled, ...props }) => (
-    <div className="relative text-zinc-800 dark:text-zinc-100">
+    <div className="relative">
         <input
+            key={value}
             type="text"
             id={name}
             name={name}

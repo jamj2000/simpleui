@@ -26,8 +26,9 @@ const classLabel = `absolute left-3.75 top-0 -translate-y-1/2
 
 export const InputDate = ({ type = "date", label = "Fecha", name, value, disabled, min, max, step, ...props }) => {
     return (
-        <div className="relative text-zinc-800 dark:text-zinc-100">
+        <div className="relative">
             <input
+                key={value}
                 type={type}
                 name={name}
                 defaultValue={value}
