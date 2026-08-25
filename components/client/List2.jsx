@@ -24,13 +24,7 @@ export function List2({
         direccion: direction,
     });
 
-    // useEffect(() => {
-    //     setOrden({
-    //         columna: sort,
-    //         direccion: direction,
-    //     })
-    // }, [sort, direction])
-
+    const [busqueda, setBusqueda] = useState("")
 
     // Protección si la data aún no llega
     const originalData = data ?? [];
@@ -70,8 +64,25 @@ export function List2({
                 </div>
 
 
+                {/* Buscador y Ordenación */}
+                <div className="my-2 flex flex-col-reverse items-end gap-2 md:flex-row md:justify-between px-4 py-2 bg-zinc-200 dark:bg-zinc-600 rounded-md w-full  ">
+                    <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-100 dark:bg-zinc-700 rounded-md border border-current/20">
+                        {columns.map(({ name, label }) => (
+                            <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
+                                {label}
+                                {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
+                            </div>
+                        ))}
+                    </div>
+
+                    <input type="search" placeholder="🔎 Buscar..."
+                        onChange={e => { setBusqueda(e.target.value) }}
+                        className="px-4 py-2 bg-zinc-100 dark:bg-zinc-700 outline-none border border-current/20  focus:border-current/40 rounded-md"
+                    />
+                </div>
+
                 {/* Header */}
-                <div className="my-2 flex justify-end xl:my-0">
+                {/* <div className="my-2 flex justify-end not-md:hidden">
                     <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-200 dark:bg-zinc-700 rounded-md xl:w-full xl:rounded-none xl:grid xl:grid-cols-[2fr_3fr_1fr_1fr] xl:gap-4 shadow-md shadow-current/20">
                         {columns.map(({ name, label }) => (
                             <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
@@ -83,24 +94,32 @@ export function List2({
                             <div className="hidden xl:flex justify-end">Acciones</div>
                         }
                     </div>
-                </div>
+                </div> */}
 
                 <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-10 items-stretch xl:grid-cols-1 xl:gap-0 w-full'>
 
                     {/* Card / Row */}
-                    {orderedData.map((data) =>
-                        <div
-                            key={data.id}
-                            onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                            className={(prefix ? "cursor-pointer" : "") + " " + "xl:odd:bg-slate-50 xl:even:bg-slate-100 xl:dark:odd:bg-slate-800 xl:dark:even:bg-slate-700 "}
-                        >
-                            <Card
+                    {orderedData
+                        .filter((item) => {
+                            if (!busqueda.trim()) return true;
+                            const texto = busqueda.toLowerCase();
+                            return columns.some(({ name }) =>
+                                String(item[name] ?? "").toLowerCase().includes(texto)
+                            );
+                        })
+                        .map((data) =>
+                            <div
+                                key={data.id}
                                 onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                                data={data}
-                                actions={actions}
-                            />
-                        </div>
-                    )}
+                                className={(prefix ? "cursor-pointer" : "") + " " + "xl:odd:bg-slate-50 xl:even:bg-slate-100 xl:dark:odd:bg-slate-800 xl:dark:even:bg-slate-700 "}
+                            >
+                                <Card
+                                    onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
+                                    data={data}
+                                    actions={actions}
+                                />
+                            </div>
+                        )}
 
 
                 </div>

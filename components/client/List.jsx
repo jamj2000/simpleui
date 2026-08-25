@@ -24,12 +24,7 @@ export function List({
         direccion: direction,
     });
 
-    // useEffect(() => {
-    //     setOrden({
-    //         columna: sort,
-    //         direccion: direction,
-    //     })
-    // }, [sort, direction])
+    const [busqueda, setBusqueda] = useState("")
 
 
     // Protección si la data aún no llega
@@ -70,8 +65,9 @@ export function List({
                     {children}
                 </div>
 
-                <div className="my-2 flex justify-end ">
-                    <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-200 dark:bg-zinc-700 rounded-md">
+                {/* Buscador y Ordenación */}
+                <div className="my-2 flex flex-col-reverse items-end gap-2 md:flex-row md:justify-between px-4 py-2 bg-zinc-200 dark:bg-zinc-600 rounded-md w-full  ">
+                    <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-100 dark:bg-zinc-700 rounded-md border border-current/20">
                         {columns.map(({ name, label }) => (
                             <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
                                 {label}
@@ -79,23 +75,36 @@ export function List({
                             </div>
                         ))}
                     </div>
+
+                    <input type="search" placeholder="🔎 Buscar..."
+                        onChange={e => { setBusqueda(e.target.value) }}
+                        className="px-4 py-2 bg-zinc-100 dark:bg-zinc-700 outline-none border border-current/20  focus:border-current/40 rounded-md"
+                    />
                 </div>
 
 
                 <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-10 items-stretch'>
-                    {orderedData.map((data) =>
-                        <div
-                            key={data.id}
-                            onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                            className={prefix ? "cursor-pointer" : ""}
-                        >
-                            <Card
+                    {orderedData
+                        .filter((item) => {
+                            if (!busqueda.trim()) return true;
+                            const texto = busqueda.toLowerCase();
+                            return columns.some(({ name }) =>
+                                String(item[name] ?? "").toLowerCase().includes(texto)
+                            );
+                        })
+                        .map((data) =>
+                            <div
+                                key={data.id}
                                 onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                                data={data}
-                                actions={actions}
-                            />
-                        </div>
-                    )}
+                                className={prefix ? "cursor-pointer" : ""}
+                            >
+                                <Card
+                                    onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
+                                    data={data}
+                                    actions={actions}
+                                />
+                            </div>
+                        )}
                 </div>
 
             </div>

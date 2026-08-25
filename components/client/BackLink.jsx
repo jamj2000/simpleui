@@ -9,7 +9,7 @@ export function BackLink({ children, className = "" }) {
 
         <div
             onClick={back}
-            className={`cursor-pointer inline-block hover:opacity-50 ${className}`}
+            className={`inline-grid place-content-center cursor-pointer hover:opacity-50 ${className}`}
         >
             {children}
         </div>
