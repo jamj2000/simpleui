@@ -4,12 +4,14 @@ Biblioteca de componentes de UI para Next.js
 
 - [1. Motivación](#1-motivación)
 - [2. Principios](#2-principios)
-- [3. Dependencias](#3-dependencias)
-- [4. Documentación](#4-documentación)
+- [3. Documentación](#3-documentación)
+- [4. Pasos a seguir](#4-pasos-a-seguir)
   - [4.1. Descarga los componentes](#41-descarga-los-componentes)
   - [4.2. Importa los componentes](#42-importa-los-componentes)
   - [4.3. Usa los componentes](#43-usa-los-componentes)
-  - [4.4. Componentes disponibles](#44-componentes-disponibles)
+- [5. Lista de Componentes disponibles](#5-lista-de-componentes-disponibles)
+
+
 
 
 
@@ -38,17 +40,15 @@ El código de este proyecto se mantendrá en todo momento lo más simple posible
 - **Responsive**. Adaptable a distintos tamaños de pantalla.
 - Soporte para **temas claro y oscuro**. 
 
-# 3. Dependencias
 
-Esta biblioteca tiene 2 dependencias:
-
-- `next-themes`, para soporte de modo claro/oscuro
-- `sonner`, para mensajes de tipo *toast*
-
-# 4. Documentación
+# 3. Documentación
 
 La documentación está accesible en [SimpleUI.dev](https://simpleui.dev).
 
+
+# 4. Pasos a seguir
+
+Para usar esta biblioteca realiza los siguientes pasos:
 
 
 ## 4.1. Descarga los componentes
@@ -57,7 +57,12 @@ La documentación está accesible en [SimpleUI.dev](https://simpleui.dev).
 npx  simpleui.dev  init
 ```
 
-> **Nota:**
+> **Información:**
+>
+> Junto con los componentes se instalan también los siguientes paquetes:
+>
+> - `next-themes`, para soporte de modos claro/oscuro. Usado por componente `ThemeToggle`
+> - `sonner`, para mensajes de tipo *toast*. Usado por componente `Form`
 >
 > Todos los componentes se guardarán en la carpeta `src/components/simpleui` o `components/simpleui` según tengas configurado tu proyecto.
 
@@ -78,27 +83,43 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 ```
 
 
-## 4.4. Componentes disponibles
+# 5. Lista de Componentes disponibles
 
-**Ordenados por afinidad.**
+
+**MENSAJES y SEPARADORES**
 
 - Alert
 - Alert small
 - Badge
-- Button
 - Space
 - Separator
+
+**ESPERAS**
+
+- Skeleton
+- Spinner
+
+**CUADROS EMERGENTES**
+
 - Tooltip
 - Popover
 - Dropdown
 - Dropdown2
 - Drawer
 - Modal
+
+**MENÚS**
+
 - MenuLink
 - MainMenu
-- Skeleton
-- Spinner
-- Icons
+
+**CLICKables**
+
+- Button
+- Switch
+  
+**FORMULARIOS**
+
 - InputText
 - InputNumber
 - InputRange
@@ -110,15 +131,24 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 - InputGroup multiple
 - InputSelect
 - InputSelect multiple
+- InputArea
 - Submit
 - Form
+
+**LISTADOS**
+
 - Table
 - List
 - Card
 - List2
 - Card2
-- DragAndDrop
-- Pagination
-- ThemeToggle
 
+
+**OTROS**
+
+- Icons
+- DragAndDrop
+- ThemeToggle
+- Pagination
+- Sidebar
 
