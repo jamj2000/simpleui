@@ -18,7 +18,9 @@ export function MenuLink({
     return (
         <Link
             href={href}
-            className={`${classBase} ${className} ${classActive} ${classHover}  ${pathname.endsWith(href) ? classCheck : ""}`}
+            className={`
+                ${classBase} ${className} ${classActive} ${classHover}  
+                ${pathname != '/' && pathname.startsWith(href) ? classCheck : ""}`}
         >
             {children}
         </Link>
