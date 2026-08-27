@@ -29,7 +29,7 @@ export function Sidebar({
     }, [])
 
     return (
-        <div className={`${isRight ? 'flex flex-row-reverse' : 'flex'}`}>
+        <div className={`${isRight ? 'flex' : 'flex  flex-row-reverse'}`}>
             <div
                 ref={panelRef}
                 className={`min-h-0 shrink-0 overflow-x-hidden ${open ? width : 'w-0'}`}
@@ -54,15 +54,14 @@ export function Sidebar({
                 </aside>
             </div>
 
-            {!permanent && <button
-                type="button"
-                onClick={() => { setOpen(false) }}
-                onMouseEnter={() => { setOpen(true) }}
-                className="w-4 px-1  cursor-ew-resize"
-                aria-label="Abrir sidebar"
-            >
-                <div className={'w-full h-full bg-slate-300 dark:bg-slate-700'} />
-            </button>
+            {!permanent &&
+                <div
+                    onClick={() => { setOpen(prev => !prev) }}
+                    className="w-2 md:w-4 cursor-ew-resize"
+                    aria-label="Abrir sidebar"
+                >
+                    <div className={'w-full h-full bg-slate-300 dark:bg-slate-700'} />
+                </div>
             }
 
         </div>

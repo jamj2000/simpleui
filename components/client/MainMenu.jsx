@@ -49,7 +49,7 @@ export function MainMenu({ position = "right", children }) {
             </button>
 
             {/* Menú */}
-            <div className={`${isOpen ? 'flex' : 'hidden'} ${menuClasses} ${positions[position]} flex-col md:flex md:flex-row md:items-center md:justify-end`} >
+            <div onClick={() => setIsOpen(false)} className={`${isOpen ? 'flex' : 'hidden'} ${menuClasses} ${positions[position]} flex-col md:flex md:flex-row md:items-center md:justify-end`} >
                 <Suspense fallback=".">
                     {children}
                 </Suspense>
