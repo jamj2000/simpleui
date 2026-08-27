@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 
 
 export function List2({
@@ -81,20 +81,6 @@ export function List2({
                     />
                 </div>
 
-                {/* Header */}
-                {/* <div className="my-2 flex justify-end not-md:hidden">
-                    <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-200 dark:bg-zinc-700 rounded-md xl:w-full xl:rounded-none xl:grid xl:grid-cols-[2fr_3fr_1fr_1fr] xl:gap-4 shadow-md shadow-current/20">
-                        {columns.map(({ name, label }) => (
-                            <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
-                                {label}
-                                {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
-                            </div>
-                        ))}
-                        {actions &&
-                            <div className="hidden xl:flex justify-end">Acciones</div>
-                        }
-                    </div>
-                </div> */}
 
                 <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-10 items-stretch xl:grid-cols-1 xl:gap-0 w-full'>
 
@@ -110,18 +96,30 @@ export function List2({
                         .map((data) =>
                             <div
                                 key={data.id}
-                                onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
+                                // onMouseEnter={() => prefix ? router.prefetch(`${prefix}/${data.id}`) : {}}
                                 className={(prefix ? "cursor-pointer" : "") + " " + "xl:odd:bg-slate-50 xl:even:bg-slate-100 xl:dark:odd:bg-slate-800 xl:dark:even:bg-slate-700 "}
                             >
-                                <Card
-                                    onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                                    data={data}
-                                    actions={actions}
-                                />
+                                {prefix
+                                    ? (
+                                        <Link
+                                            href={`${prefix}/${data.id}`}
+                                            prefetch
+                                            className="block cursor-pointer"
+                                        >
+                                            <Card
+                                                data={data}
+                                                actions={actions}
+                                            />
+                                        </Link>
+                                    ) : (
+                                        <Card
+                                            data={data}
+                                            actions={actions}
+                                        />
+                                    )}
                             </div>
-                        )}
-
-
+                        )
+                    }
                 </div>
 
             </div>

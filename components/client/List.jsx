@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useState } from "react";
 
 
@@ -16,8 +16,6 @@ export function List({
     children,
 }) {
     const Card = card ?? CardEmpty
-
-    const router = useRouter()
 
     const [orden, setOrden] = useState({
         columna: sort,
@@ -92,19 +90,29 @@ export function List({
                                 String(item[name] ?? "").toLowerCase().includes(texto)
                             );
                         })
-                        .map((data) =>
-                            <div
-                                key={data.id}
-                                onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                                className={prefix ? "cursor-pointer" : ""}
-                            >
-                                <Card
-                                    onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                                    data={data}
-                                    actions={actions}
-                                />
-                            </div>
-                        )}
+                        .map((data) => prefix
+                            ? (
+                                <Link
+                                    key={data.id}
+                                    href={`${prefix}/${data.id}`}
+                                    prefetch
+                                    className="block cursor-pointer"
+                                >
+                                    <Card
+                                        data={data}
+                                        actions={actions}
+                                    />
+                                </Link>
+                            ) : (
+                                <div key={data.id}>
+                                    <Card
+                                        data={data}
+                                        actions={actions}
+                                    />
+                                </div>
+                            )
+                        )
+                    }
                 </div>
 
             </div>

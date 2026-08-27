@@ -14,7 +14,13 @@ export const Card2 = ({ data, actions }) => (
 
         <div className="mt-3 xl:mt-0 flex justify-end">
             {actions &&
-                <div className="flex gap-1" onClick={e => e.stopPropagation()}>
+                <div
+                    className="flex gap-1 self-end"
+                    onClick={e => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}
+                >
                     {actions.map((Action, index) =>
                         <Action key={index} data={data} />
                     )}

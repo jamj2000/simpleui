@@ -7,7 +7,13 @@ export const Card = ({ data, actions }) => (
         Coloca aquí el contenido del Card
 
         {actions &&
-            <div className="flex gap-1 self-end" onClick={e => e.stopPropagation()}>
+            <div
+                className="flex gap-1 self-end"
+                onClick={e => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                }}
+            >
                 {actions.map((Action, index) => (
                     <Action
                         key={index}
