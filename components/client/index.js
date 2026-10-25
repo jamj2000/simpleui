@@ -18,7 +18,7 @@ export { Sidebar } from './Sidebar'
 export { Switch } from './Switch'
 export { Table } from './Table'
 export { ThemeToggle } from './ThemeToggle'
-
+export { Toggle } from './Toggle'
 
 
 
