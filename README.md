@@ -1,8 +1,8 @@
 # Simple UI`.dev` <!-- omit in toc -->
 
-[![NPM Version](https://shields.io)](https://npmjs.com)
-[![NPM Bundle Size](https://shields.io)](https://bundlephobia.com)
-[![NPM Downloads](https://shields.io)](https://npmjs.com)
+[![NPM Version](https://img.shields.io/npm/v/simpleui.dev)](https://www.npmjs.com/package/simpleui.dev)
+[![NPM Bundle Size](https://img.shields.io/bundlephobia/minzip/simpleui.dev)](https://bundlephobia.com/package/simpleui.dev)
+[![NPM Downloads](https://img.shields.io/npm/dm/simpleui.dev)](https://www.npmjs.com/package/simpleui.dev)
 
 Biblioteca de componentes de UI para Next.js
 
