@@ -31,7 +31,7 @@ El principal motivo por el que decidí desarrollar esta biblioteca de componente
 
 Este proyecto no pretende proporcionar código avanzado ni convertirse en una biblioteca ampliamente usada. La intención es meramente didáctica.
 
-Se persigue que el alumno sea capaz de usar, modificar y ampliar su conjunto personalizado de componentes haciendo uso de esta biblioteca si así lo considera oportuno.
+Se persigue que el alumno sea capaz de usar, modificar y ampliar su conjunto personalizado de componentes haciendo uso de esta biblioteca.
 
 Esta biblioteca está enfocada principalmente a los componentes que interactúan con el backend, como son los de tipo `Input` y `Form`.
 
