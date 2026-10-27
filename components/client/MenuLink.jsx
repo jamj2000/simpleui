@@ -1,7 +1,7 @@
 'use client'
+
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
 
 const classBase = "w-full md:w-fit inline-flex gap-2 items-center align-middle transition duration-300"
 
@@ -15,14 +15,20 @@ export function MenuLink({
 }) {
     const pathname = usePathname()
 
+    const isActive = href === '/'
+        ? pathname === '/'
+        : pathname === href || pathname.startsWith(`${href}/`)
+
     return (
         <Link
             href={href}
             className={`
-                ${classBase} ${className} ${classActive} ${classHover}  
-                ${pathname != '/' && pathname.startsWith(href) ? classCheck : ""}`}
+                ${classBase} ${className} ${classActive} ${classHover}
+                ${isActive ? classCheck : ""}
+            `}
         >
             {children}
         </Link>
     )
 }
+
