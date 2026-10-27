@@ -1,5 +1,9 @@
 # Simple UI`.dev` <!-- omit in toc -->
 
+[![NPM Version](https://shields.io)](https://npmjs.com)
+[![NPM Bundle Size](https://shields.io)](https://bundlephobia.com)
+[![NPM Downloads](https://shields.io)](https://npmjs.com)
+
 Biblioteca de componentes de UI para Next.js
 
 - [1. Motivación](#1-motivación)
