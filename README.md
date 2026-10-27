@@ -85,7 +85,6 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 
 # 5. Lista de Componentes disponibles
 
-
 **MENSAJES y SEPARADORES**
 
 - Alert
@@ -108,16 +107,19 @@ import { Alert, Button, Form } from "@/componentes/simpleui";
 - Drawer
 - Modal
 
-**MENÚS**
+**ESTRUCTURA y MENÚS**
 
 - MenuLink
 - MainMenu
+- Sidebar
+- Layout
 
 **CLICKables**
 
 - Button
 - Switch
-  
+- Toggle
+    
 **FORMULARIOS**
 
 - InputText
